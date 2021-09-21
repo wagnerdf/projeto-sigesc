@@ -1,22 +1,24 @@
-
 form{
      position: absolute;
-     top: 33%;
+     top: 40%;
      left: 41%;
      right: 41%;
   }   
 h5{
-  	position: absolute;
-  	top: 30%;
-  	left: 33%;  
+  	text-align: center;
+  	top: 80%;
+  	left: 48%;  
   } 
 .msg{
-  	position: absolute;
-  	top: 15%;
-  	left: 33%;
+  	text-align: center;
   	font-size: 15px;  
-  	   color: #664d03;
+  	   color: #ff0000;
   	   background-color: #fff3cd;
   	   border-color: #ffecb5;
   } 
+
+body {
+	background-color: #F8CEBA;
+}
+
 

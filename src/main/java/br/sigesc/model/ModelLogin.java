@@ -1,4 +1,4 @@
-package model;
+package br.sigesc.model;
 
 import java.io.Serializable;
 

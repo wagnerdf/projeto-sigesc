@@ -7,6 +7,23 @@
   <name>SIGESC</name>
   <description>Projeto SIGESC – Um Portal de Transparência e Gestão para
 Condomínios</description>
+ 
+ 
+ <dependencies>
+
+	<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.2.23</version>
+	</dependency>
+ 
+ 
+ </dependencies>
+ 
+ 
+ 
+ 
   <build>
     <plugins>
       <plugin>

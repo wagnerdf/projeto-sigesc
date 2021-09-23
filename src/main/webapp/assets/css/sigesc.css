@@ -1,9 +1,4 @@
-form{
-     position: absolute;
-     top: 40%;
-     left: 41%;
-     right: 41%;
-  }   
+
 h5{
   	text-align: center;
   	top: 80%;
@@ -21,4 +16,12 @@ body {
 	background-color: #F8CEBA;
 }
 
-
+form{
+     position: absolute;
+     top: 20%;
+     left: 41%;
+     right: 41%;
+  }   
+.container{
+    max-width: 50%;  
+}

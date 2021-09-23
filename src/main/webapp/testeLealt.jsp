@@ -15,81 +15,39 @@
 </head>
 <body>
 
+	<div align="center">
+	<TABLE border=1>
 
-<form class="row g-3 needs-validation" novalidate>
-  <div class="col-md-4">
-    <div class="form-outline">
-      <input
-        type="text"
-        class="form-control"
-        id="validationCustom01"
-        value="Mark"
-        required
-      />
-      <label for="validationCustom01" class="form-label">First name</label>
-      <div class="valid-feedback">Looks good!</div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="form-outline">
-      <input
-        type="text"
-        class="form-control"
-        id="validationCustom02"
-        value="Otto"
-        required
-      />
-      <label for="validationCustom02" class="form-label">Last name</label>
-      <div class="valid-feedback">Looks good!</div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="input-group form-outline">
-      <span class="input-group-text" id="inputGroupPrepend">@</span>
-      <input
-        type="text"
-        class="form-control"
-        id="validationCustomUsername"
-        aria-describedby="inputGroupPrepend"
-        required
-      />
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="invalid-feedback">Please choose a username.</div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="form-outline">
-      <input type="text" class="form-control" id="validationCustom03" required />
-      <label for="validationCustom03" class="form-label">City</label>
-      <div class="invalid-feedback">Please provide a valid city.</div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="form-outline">
-      <input type="text" class="form-control" id="validationCustom05" required />
-      <label for="validationCustom05" class="form-label">Zip</label>
-      <div class="invalid-feedback">Please provide a valid zip.</div>
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        value=""
-        id="invalidCheck"
-        required
-      />
-      <label class="form-check-label" for="invalidCheck">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">You must agree before submitting.</div>
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
+		<TR>
+			<TD WIDTH=100>
+			<div>
+			<img src="<%=request.getContextPath()%>/assets/imgs/condominio.jpg" width="225" height="318">
+			</div>
+			</TD>
+			<TD WIDTH=200>
+			<div>
+			<h4>
+						<span class="style1">Enquete:</span>
+					</h4>
+					<br><h5>Como você usuário avalia o portal Sigesc 
+					         adquirido para automatizar as operações realizadas diariamente no
+							condomínio?</h5> 
+							
+					<input type="radio">Excelente<br>
+				   	<input type="radio">Muito Bom<br>
+				    <input type="radio">Bom<br>
+					<input type="radio">Ruim<br> 
+					<input type="submit" name="Votar" value="Votar"> 
+					<input type="button" name="Resultado" value="Resultado">
+					
+			</div>
+			</TD>
+		</TR>
+	</TABLE>
+	</div>
+
+
+
 
 
 	<!-- Option 1: Bootstrap Bundle with Popper -->

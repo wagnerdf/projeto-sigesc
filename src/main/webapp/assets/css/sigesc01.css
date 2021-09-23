@@ -1,0 +1,98 @@
+
+/* PARTE 2 */
+body#corpo {
+	background-color: #FEF3ED;
+	font: 12px verdana; 
+}
+
+div#geral {
+	margin: 0 auto;
+	width: 1130px;
+}
+
+
+/* PARTE 3 */
+div#topo {
+	background-color: #FAD8C7;
+	height: 110px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+div#menu {
+	background-color: #FF0033;
+	height: 30px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+
+/* PARTE 4 */
+div#esquerda {
+	float: left;
+	height: 430px;
+	margin-right: 5px;
+	width: 142px;
+}
+
+div#sub-conteudo {
+	background-color: #FAD8C7;
+	float: left;
+	margin-bottom: 5px;
+	min-height: 430px;
+	width: 831px; /* 145px - 145px - 5px - 5px */
+}
+
+
+/* PARTE 5 */
+div#direita {
+	float: right;
+	height: 430px;
+	margin-left: 5px;
+	width: 145px;
+}
+
+div#rodape {
+	background-color: #FAD8C7;
+	clear: both;
+	height: 25px;
+	width: 100%;
+}
+
+
+/* PARTE 6 */
+div#conteudo {
+	
+}
+
+div#info {
+	background-color: #FAD8C7;
+	height: 431px;
+	width: 140px;
+}
+
+div#top-aniversarios,
+div#top-arquivos {
+	background-color: #FAD8C7;
+	margin-bottom: 5px;
+	min-height: 212px;
+	width: 145px;
+}
+
+
+/* Bordas arredondadas - no internet explorer não funciona-procedimento tem que ser via codigo*/
+div#conteudo-usuario,
+div#info,
+div#menu, 
+div#rodape,
+div#sub-conteudo,
+div#topo,
+div#top-aniversarios,
+div#top-arquivos {
+	border-radius: 8px; /* CSS3 */
+	-khtml-border-radius: 8px; /* Safari() */
+	-moz-border-radius: 8px; /* Mozilla */
+	-opera-border-radius: 8px; /* Opera */
+	-webkit-border-radius: 8px; /* Safari */
+}
+

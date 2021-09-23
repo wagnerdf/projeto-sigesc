@@ -1,0 +1,67 @@
+
+
+/* CENTER */
+center#boas-vindas {
+	color: #888;
+	padding-top: 15px;
+}
+
+center#rodape-texto {
+	padding-top: 5px;
+}
+
+center.top-titulo {
+	font-weight: bold;
+	padding-bottom: 10px;
+	padding-top: 8px;
+}
+
+/* DIV */
+
+div#info-opcoes-tema-escolha{
+	text-align: left;
+	padding-top: 3px;
+	padding-left: 25px;
+}
+
+div#info-imagen {
+	text-align: center;	
+}
+
+div#info-opcoes-tema{
+	text-align: center;
+	margin-left: 3px;
+	padding-top: 10px;
+}
+
+
+
+div#info-texto {
+	text-align: center;
+	color: #888;
+	margin-left: 5px;
+	padding-top: 5px;
+}
+
+div#menu-links {
+	color: #AAA;
+	font: 14px verdana;
+	padding-left: 15px;
+	padding-top: 7px;
+}
+
+div#titulo {
+	color: #369;
+	font: bold 18px verdana;
+	padding-left: 15px;
+	padding-top: 40px;
+}
+
+div.top-items {
+	padding-left: 10px;
+}
+
+/* SPAN */
+span.info-texto-destaque {
+	font-weight: bold;
+}

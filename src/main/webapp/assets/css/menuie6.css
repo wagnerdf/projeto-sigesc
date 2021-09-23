@@ -1,0 +1,9 @@
+/* Micox Pseudo-class-css2 to IE (MXPC). Activate .hover and .first-child in IE 6 */
+* html * { color: expression( (function(who){ if(!who.MXPC){
+   who.MXPC = '1';
+   if(who.nodeName != 'A'){
+      who.onmouseenter=function(){ who.className += ' hover'};
+      who.onmouseleave=function(){ who.className = who.className.replace(' hover','')}; }
+   (who==who.parentNode.firstChild) ? who.className += ' first-child' : '' ;
+} } )(this) , 'auto') }
+

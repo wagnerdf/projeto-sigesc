@@ -60,7 +60,7 @@
     </li>
     
     
-    <li><a href="/Sigesc/index.jsp">|Sair|</a></li>
+    <li><a href="ServletLogin?acao=logout">|Sair|</a></li>
 </ul>
 
 </body>

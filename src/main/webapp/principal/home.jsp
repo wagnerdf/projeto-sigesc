@@ -11,7 +11,9 @@
 <body>
 	<form>
 	
-	<center id="boas-vindas">Seja bem-vindo: Wagner Andrade</center>
+	<div id="info-texto">
+	<h4>Seja bem-vindo: <%= session.getAttribute("usuario")%></h4>	
+	</div>
         
 	<br>
 	

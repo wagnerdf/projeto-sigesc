@@ -1,3 +1,11 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%
+	Date data = new Date();
+	SimpleDateFormat data_formatada = new SimpleDateFormat("dd/MM/yyyy");
+	String mostra_data = data_formatada.format(data);
+%>
 
 <form style="width: 138px; height: 136px">
 	<br>
@@ -7,8 +15,12 @@
 </form>
 <br>
 <div id="info-texto">
-	<span class="info-texto-destaque">Perfil</span>: Síndico<br/>
-	<span class="info-texto-destaque">Cadastro</span>: 23/09/21	
+	<span class="info-texto-destaque">Usuário: </span><%= session.getAttribute("usuario")%><br/>
+	<span class="info-texto-destaque">Data: </span><%=mostra_data%><br/>
+	<span class="info-texto-destaque">Hora: </span>
+	<div id="txt">
+	
+	</div>	
 </div>
 
 <div id="info-opcoes-tema">
@@ -20,5 +32,4 @@
 <input type="radio" name="choice" value="blue-theme" onClick="chooseStyle(this.value, 30)">Tema Azul<br>
 <input type="radio" name="choice" value="brown-theme" onClick="chooseStyle(this.value, 30)">Tema Verde<br>
 </div>
-
 

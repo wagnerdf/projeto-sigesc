@@ -35,7 +35,7 @@
 		
 	</head>
 	
-	<body id="corpo">
+	<body id="corpo" onload="time()">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -70,5 +70,28 @@
 			
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
-	</body>
+</body>
+<script>
+	function time(){
+		today = new Date();
+		h = today.getHours();
+		m = today.getMinutes();
+		s = today.getSeconds();
+		
+		if(h<10){
+			h="0"+h;
+		}
+		if(m<10){
+			m="0"+m;
+		}
+		if(s<10){
+			s="0"+s;
+		}
+		
+		document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+		setTimeout('time()',500);
+		}
+	
+	
+</script>
 </html>

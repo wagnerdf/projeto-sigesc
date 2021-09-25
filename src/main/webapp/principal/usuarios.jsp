@@ -50,43 +50,84 @@
 					<div id="info"><%@ include file="/principal/info.jsp" %></div> <!-- 7 -->
 					</div>
 		
-		
-					<div id="sub-conteudo">
-		
-						<div id="info-texto">
-							<h6>Seja bem-vindo:	<%=session.getAttribute("usuario")%></h6>
-						</div>
-		
-						<br>
-		
-						<div align="center">
-						<TABLE>
-		
-							<TR>
-							<TD WIDTH=50%>
-										<div align="center">
-											<img src="<%=request.getContextPath()%>/assets/imgs/condominio.jpg" width="225" height="318">
-										</div>
-							</TD>
-							<TD WIDTH=50%>
-									<div align="left">
-										<h6><span class="style1">Enquete:</span></h6>
+			<div id="sub-conteudo">
+
+
+
+	
+			
+					
+						<!-- Page-body start -->
+
+						
+	
+
+									<div class="w-100 p-3">
+										<h4 align="center" class="sub-title">Cadastro de Usuário</h4>
+
+										<form class="form-material"
+											action="<%= request.getContextPath() %>/ServLetUsuarioController"
+											method="post">
 											<div>
-												<br>
-												<h6>Como você usuário avalia o portal Sigesc adquirido
-													para automatizar as operações realizadas diariamente no
-													condomínio?</h6>
-												<br> <input type="radio">Excelente<br> <input
-													type="radio">Muito Bom<br> <input type="radio">Bom<br>
-												<input type="radio">Ruim<br> <br> <input
-													type="submit" name="Votar" value="Votar"> <input
-													type="button" name="Resultado" value="Resultado">
+												<label class="float-label">ID:</label> 
+												<input type="text" name="id" id="id" class="form-control" readonly="readonly"
+												 value="${modolLogin.id}"> <span class="form-bar"></span> 
+												 
 											</div>
+											<div>
+												<label class="float-label">Nome:</label>
+												<input type="text" name="nome" id="nome" class="form-control" required="required" 
+												value="${modolLogin.nome}"> <span class="form-bar"></span>
+												
+												
+												
+												
+											</div>
+											<div>
+												<label class="float-label">Email:</label>
+												<input type="email" name="email" id="email"
+													class="form-control" required="required" autocomplete="off"
+													value="${modolLogin.email}"> <span class="form-bar"></span>
+												
+											</div>
+											<div>
+												<label class="float-label">login</label>
+												<input type="text" name="login" id="login"
+													class="form-control" required="required" autocomplete="off"
+													value="${modolLogin.login}"> <span class="form-bar"></span>
+												
+											</div>
+											<div>
+												<label class="float-label">Password</label>
+												<input type="password" name="senha" id="senha"
+													class="form-control" required="required" autocomplete="off"
+													value="${modolLogin.senha}"> <span class="form-bar"></span>
+												<br/>
+											</div>
+											<div align="center">
+											<button class="btn btn-primary waves-effect waves-light">Novo</button>
+											<button class="btn btn-success waves-effect waves-light">Salvar</button>
+											<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+											</div>
+										</form>
+
 									</div>
-							</TD>
-							</TR>
-					</TABLE>
-				</div>
+								
+							
+						
+
+							<span>${msg}</span>
+
+						<!-- Page-body end -->
+					
+				
+				
+
+
+
+
+
+
 
 
 			</div>
@@ -148,6 +189,8 @@
 		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
 		setTimeout('time()',500);
 		}
+	
+	
 	
 </script>
 

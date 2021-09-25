@@ -145,9 +145,11 @@
 			s="0"+s;
 		}
 		
-		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
+		document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
 		setTimeout('time()',500);
 		}
+	
+	
 	
 </script>
 

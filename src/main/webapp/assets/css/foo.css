@@ -18,6 +18,20 @@ center.top-titulo {
 
 /* DIV */
 
+div#usuarios{
+	
+	
+	margin-left: 20px;
+	padding-top: 20px;
+	
+}
+
+div#sub-conteudo{
+	color: #888;
+	
+
+}
+
 div#info-opcoes-tema-escolha{
 	text-align: left;
 	padding-top: 3px;

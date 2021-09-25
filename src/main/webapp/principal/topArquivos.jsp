@@ -1,13 +1,13 @@
-<center class="top-titulo"><h5>Acesso Rápido</h5></center>
+<center class="top-titulo">Acesso Rápido</center>
 
 <div class="top-items">
-	<tr align="lefth" class="">
-	 <th><h6><a href="/Sigesc/ListarEnquetes.do">Relação de Enquetes</a></h6></th><br/>
-	 <th><h6><a href="/Sigesc/ListarReuniao.do">Reuniões Agendadas</a></h6></th><br/>
-	 <th><h6><a href="">Regimento Interno</a></h6></th><br/>
-	 <th><h6><a href="">Balanço Maio 2011</a></h6></th><br/>
-	 <th><h6><a href="">Ata de Reunião</a></h6></th><br/>	 
-	 <th><h6><a href="">Reuniões Agendadas</a></h6></th>
+	
+	 <th><a href="">Relação de Enquetes</a></th><br/>
+	 <th><a href="">Reuniões Agendadas</a></th><br/>
+	 <th><a href="">Regimento Interno</a></th><br/>
+	 <th><a href="">Balanço Maio 2011</a></th><br/>
+	 <th><a href="">Ata de Reunião</a></th><br/>	 
+	 <th><a href="">Reuniões Agendadas</a></th>
 	 	 	 	
-	</tr>	
+		
 </div>

@@ -15,12 +15,12 @@
 <body>
 
 <ul id="menu">
-   <li><a href="/Sigesc/frame.jsp">|Início|</a></li>
+   <li><a href="<%= request.getContextPath() %>/principal/principal.jsp">|Início|</a></li>
     <li><a href="#">|Usuários|</a>
       	<ul>
            		
            		 <li><a href="frame.jsp?op=1">Cadastrar Funcionário</a></li>                 
-                 <li><a href="frame.jsp?op=2">Cadastrar Usuários</a></li>
+                 <li><a href="principal/usuarios.jsp">Cadastrar Usuários</a></li>
                  <li><a href="frame.jsp?op=3">Cadastrar Login</a></li>
                  <li><a href="/Sigesc/ListarFuncionario.do">Pesquisar Funcionário</a></li>
                  <li><a href="/Sigesc/ListarUsuario.do">Pesquisar Usuários</a></li>

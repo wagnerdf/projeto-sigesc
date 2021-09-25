@@ -17,7 +17,6 @@
 <div id="info-texto">
 	<span class="info-texto-destaque">Usuário: </span><%= session.getAttribute("usuario")%><br/>
 	<span class="info-texto-destaque">Data: </span><%=mostra_data%><br/>
-	<span class="info-texto-destaque">Hora: </span>
 	<div id="txt">
 	
 	</div>	

@@ -36,7 +36,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 		
-		
+	<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>	
 	</head>
 	
 	<body id="corpo" onload="time()">

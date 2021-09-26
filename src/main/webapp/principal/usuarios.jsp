@@ -36,7 +36,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 		
-		
+		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 	</head>
 	
 	<body id="corpo" onload="time()">
@@ -52,84 +52,67 @@
 		
 			<div id="sub-conteudo">
 
+	
+				<div class="w-100 p-3"><!----------------------------- Page-body start ------------------------->
 
+
+
+					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
+
+					<form class="form-material"
+						action="<%=request.getContextPath()%>/ServLetUsuarioController"
+						method="post">
+						<div>
+							<label class="float-label">ID:</label> <input type="text"
+								name="id" id="id" class="form-control" readonly="readonly"
+								value="${modolLogin.id}"> <span class="form-bar"></span>
+
+						</div>
+						<div>
+							<label class="float-label">Nome:</label> <input type="text"
+								name="nome" id="nome" class="form-control" required="required"
+								value="${modolLogin.nome}"> <span class="form-bar"></span>
+
+
+
+
+						</div>
+						<div>
+							<label class="float-label">Email:</label> <input type="email"
+								name="email" id="email" class="form-control" required="required"
+								autocomplete="off" value="${modolLogin.email}"> <span
+								class="form-bar"></span>
+
+						</div>
+						<div>
+							<label class="float-label">login</label> <input type="text"
+								name="login" id="login" class="form-control" required="required"
+								autocomplete="off" value="${modolLogin.login}"> <span
+								class="form-bar"></span>
+
+						</div>
+						<div>
+							<label class="float-label">Password</label> <input
+								type="password" name="senha" id="senha" class="form-control"
+								required="required" autocomplete="off"
+								value="${modolLogin.senha}"> <span class="form-bar"></span>
+							<br />
+						</div>
+						<div align="center">
+							<button class="btn btn-primary waves-effect waves-light">Novo</button>
+							<button class="btn btn-success waves-effect waves-light">Salvar</button>
+							<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+						</div>
+
+						<span>${msg}</span>
+					</form>
+
+
+
+
+				</div><!------------------------------------ Page-body end --------------------------------------->
 
 	
-			
-					
-						<!-- Page-body start -->
-
-						
-	
-
-									<div class="w-100 p-3">
-										<h4 align="center" class="sub-title">Cadastro de Usuário</h4>
-
-										<form class="form-material"
-											action="<%= request.getContextPath() %>/ServLetUsuarioController"
-											method="post">
-											<div>
-												<label class="float-label">ID:</label> 
-												<input type="text" name="id" id="id" class="form-control" readonly="readonly"
-												 value="${modolLogin.id}"> <span class="form-bar"></span> 
-												 
-											</div>
-											<div>
-												<label class="float-label">Nome:</label>
-												<input type="text" name="nome" id="nome" class="form-control" required="required" 
-												value="${modolLogin.nome}"> <span class="form-bar"></span>
-												
-												
-												
-												
-											</div>
-											<div>
-												<label class="float-label">Email:</label>
-												<input type="email" name="email" id="email"
-													class="form-control" required="required" autocomplete="off"
-													value="${modolLogin.email}"> <span class="form-bar"></span>
-												
-											</div>
-											<div>
-												<label class="float-label">login</label>
-												<input type="text" name="login" id="login"
-													class="form-control" required="required" autocomplete="off"
-													value="${modolLogin.login}"> <span class="form-bar"></span>
-												
-											</div>
-											<div>
-												<label class="float-label">Password</label>
-												<input type="password" name="senha" id="senha"
-													class="form-control" required="required" autocomplete="off"
-													value="${modolLogin.senha}"> <span class="form-bar"></span>
-												<br/>
-											</div>
-											<div align="center">
-											<button class="btn btn-primary waves-effect waves-light">Novo</button>
-											<button class="btn btn-success waves-effect waves-light">Salvar</button>
-											<button class="btn btn-danger waves-effect waves-light">Excluir</button>
-											</div>
-										</form>
-
-									</div>
-								
-							
-						
-
-							<span>${msg}</span>
-
-						<!-- Page-body end -->
-					
-				
-				
-
-
-
-
-
-
-
-
 			</div>
 			<!-- 4 -->	   
 	      		

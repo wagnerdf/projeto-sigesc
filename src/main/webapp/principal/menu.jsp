@@ -7,27 +7,23 @@
 <title>Untitled Document</title>
 <link href="<%= request.getContextPath() %>/assets/css/estilo.css" rel="stylesheet" type="text/css" />
 
-<!--[if IE 6]>
-<link href="menui6.css" rel="stylesheet" type="text/css" />
-<![endif]-->
-
 </head>
 <body>
 
 <ul id="menu">
-   <li><a href="<%= request.getContextPath() %>/principal/principal.jsp">|Início|</a></li>
-    <li><a href="#">|Usuários|</a>
+   <li><a href="<%= request.getContextPath() %>/principal/principal.jsp">|&nbsp;Início&nbsp;|</a></li>
+    <li><a href="#">|&nbsp;Usuários&nbsp;|</a>
       	<ul>
            		
            		 <li><a href="frame.jsp?op=1">Cadastrar Funcionário</a></li>                 
-                 <li><a href="principal/usuarios.jsp">Cadastrar Usuários</a></li>
+                 <li><a href="<%= request.getContextPath() %>/principal/usuarios.jsp">Cadastrar Usuários</a></li>
                  <li><a href="frame.jsp?op=3">Cadastrar Login</a></li>
                  <li><a href="/Sigesc/ListarFuncionario.do">Pesquisar Funcionário</a></li>
                  <li><a href="/Sigesc/ListarUsuario.do">Pesquisar Usuários</a></li>
                  <li><a href="/Sigesc/ListarLogin.do">Pesquisar Login</a></li>
         </ul>
      </li>   
-    <li><a href="#">|Serviços|</a>
+    <li><a href="#">|&nbsp;Serviços&nbsp;|</a>
        <ul> 
        		<li><a href="/boleto/samples/form.html" target="_Blank" >Módulo Boleto</a></li>
             <li><a href="frame.jsp?op=7" >Cadastrar Fornecedor</a></li>
@@ -37,7 +33,7 @@
             <li><a href="frame.jsp?op=23">Upload de Arquivos</a></li>
        </ul>
     </li>
-    <li><a href="#">|Consulta|</a>
+    <li><a href="#">|&nbsp;Consulta&nbsp;|</a>
           <ul>
            	<li><a href="frame.jsp?op=10">Comunicados</a></li>
             <li><a href="frame.jsp?op=11">Ata de Reunião</a></li>
@@ -50,7 +46,7 @@
             
         </ul>
     </li>
-    <li><a href="#">|Comunicação|</a>
+    <li><a href="#">|&nbsp;Comunicação&nbsp;|</a>
           <ul>
             <li><a href="frame.jsp?op=14">Enquete</a></li>
             <li><a href="frame.jsp?op=15">Sugestão</a></li>
@@ -60,7 +56,7 @@
     </li>
     
     
-    <li><a href="ServletLogin?acao=logout">|Sair|</a></li>
+    <li><a href="<%= request.getContextPath() %>/ServletLogin?acao=logout">|&nbsp;Sair&nbsp;|</a></li>
 </ul>
 
 </body>

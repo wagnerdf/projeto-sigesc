@@ -1,13 +1,30 @@
+/* IMAGENS */
+#imgsigesc{
+	position: relative;
+	padding-top: 10px; 
+	padding-left: 15px; 
+	width: 40%; 
+}
 
+#imgredesocial{
+	position: relative;
+	width: 35%; 
+	left: 100px; 
+	padding-top: 20px; 
+}
 
 /* CENTER */
+div#rodape-texto{
+	
+	text-align: center;
+	color: #888;
+	padding-top: 5px;
+		
+}
+
 center#boas-vindas {
 	color: #888;
 	padding-top: 15px;
-}
-
-center#rodape-texto {
-	padding-top: 5px;
 }
 
 center.top-titulo {
@@ -19,8 +36,6 @@ center.top-titulo {
 /* DIV */
 
 div#usuarios{
-	
-	
 	margin-left: 20px;
 	padding-top: 20px;
 	
@@ -28,14 +43,13 @@ div#usuarios{
 
 div#sub-conteudo{
 	color: #888;
-	
-
 }
 
 div#info-opcoes-tema-escolha{
 	text-align: left;
 	padding-top: 3px;
 	padding-left: 25px;
+	color: #888;
 }
 
 div#info-imagen {

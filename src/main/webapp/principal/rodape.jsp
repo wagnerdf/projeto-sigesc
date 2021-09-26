@@ -1,5 +1,5 @@
-<center id="rodape-texto">
+<div id="rodape-texto">
  
-  SIGESC - Um Portal de Transparência e Gestão para Condomínios 
+  <span class="info-texto-destaque">SIGESC - Um Portal de Transparência e Gestão para Condomínios</span> 
   
-</center>
+</div>

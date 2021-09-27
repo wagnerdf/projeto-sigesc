@@ -94,9 +94,11 @@
 							<button class="btn btn-primary waves-effect waves-light">Novo</button>
 							<button class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+							
+							<br/>
+							<h5 class="msg">${msg}</h5>
 						</div>
-
-						<span>${msg}</span>
+							
 					</form>
 
 

@@ -59,42 +59,35 @@
 
 					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
 
-					<form class="form-material"
-						action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post">
-						<div>
-							<label class="float-label">ID:</label> <input type="text"
-								name="id" id="id" class="form-control" readonly="readonly"
-								value="${modolLogin.id}"> <span class="form-bar"></span>
+					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post">
+						<div class="form-group form-default">
+								<label class="float-label">ID:</label>
+								<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modolLogin.id}">
+								<span class="form-bar"></span>
+
+						</div>
+						<div class="form-group form-default">
+							<label class="float-label">Nome:</label> 
+							<input type="text"	name="nome" id="nome" class="form-control" required="required" value="${modolLogin.nome}"> 
+							<span class="form-bar"></span>
+
+						</div>
+						<div class="form-group form-default">
+							<label class="float-label">Email:</label> 
+							<input type="email" name="email" id="email" class="form-control" required="required" autocomplete="off" value="${modolLogin.email}"> 
+							<span class="form-bar"></span>
+
+						</div>
+						<div class="form-group form-default">
+							<label class="float-label">login</label> 
+							<input type="text" name="login" id="login" class="form-control" required="required" autocomplete="off" value="${modolLogin.login}"> 
+							<span class="form-bar"></span>
 
 						</div>
 						<div>
-							<label class="float-label">Nome:</label> <input type="text"
-								name="nome" id="nome" class="form-control" required="required"
-								value="${modolLogin.nome}"> <span class="form-bar"></span>
-
-
-
-
-						</div>
-						<div>
-							<label class="float-label">Email:</label> <input type="email"
-								name="email" id="email" class="form-control" required="required"
-								autocomplete="off" value="${modolLogin.email}"> <span
-								class="form-bar"></span>
-
-						</div>
-						<div>
-							<label class="float-label">login</label> <input type="text"
-								name="login" id="login" class="form-control" required="required"
-								autocomplete="off" value="${modolLogin.login}"> <span
-								class="form-bar"></span>
-
-						</div>
-						<div>
-							<label class="float-label">Password</label> <input
-								type="password" name="senha" id="senha" class="form-control"
-								required="required" autocomplete="off"
-								value="${modolLogin.senha}"> <span class="form-bar"></span>
+							<label class="float-label">Password</label> 
+							<input type="password" name="senha" id="senha" class="form-control"	required="required" autocomplete="off"	value="${modolLogin.senha}"> 
+							<span class="form-bar"></span>
 							<br />
 						</div>
 						<div align="center">

@@ -12,6 +12,7 @@
 
 <ul id="menu">
    <li><a href="<%= request.getContextPath() %>/principal/principal.jsp">|&nbsp;Início&nbsp;|</a></li>
+    
     <li><a href="#">|&nbsp;Usuários&nbsp;|</a>
       	<ul>
            		

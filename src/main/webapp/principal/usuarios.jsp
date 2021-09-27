@@ -60,8 +60,7 @@
 					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
 
 					<form class="form-material"
-						action="<%=request.getContextPath()%>/ServLetUsuarioController"
-						method="post">
+						action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post">
 						<div>
 							<label class="float-label">ID:</label> <input type="text"
 								name="id" id="id" class="form-control" readonly="readonly"

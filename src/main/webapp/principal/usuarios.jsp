@@ -79,13 +79,13 @@
 
 						</div>
 						<div class="form-group form-default">
-							<label class="float-label">login</label> 
+							<label class="float-label">login:</label> 
 							<input type="text" name="login" id="login" class="form-control" required="required" autocomplete="off" value="${modolLogin.login}"> 
 							<span class="form-bar"></span>
 
 						</div>
 						<div>
-							<label class="float-label">Password</label> 
+							<label class="float-label">Password:</label> 
 							<input type="password" name="senha" id="senha" class="form-control"	required="required" autocomplete="off"	value="${modolLogin.senha}"> 
 							<span class="form-bar"></span>
 							<br />
@@ -94,13 +94,14 @@
 							<button class="btn btn-primary waves-effect waves-light">Novo</button>
 							<button class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+						<div>	
+							<br>
 							
-							<br/>
-							<h5 class="msg">${msg}</h5>
+						</div>	
 						</div>
 							
 					</form>
-
+						<h4 class="msg" align="center">${msg}</h4>
 
 
 

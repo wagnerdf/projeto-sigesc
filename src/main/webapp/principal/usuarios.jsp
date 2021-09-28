@@ -15,7 +15,8 @@
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
- 
+		
+		
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
@@ -96,7 +97,7 @@
 						<div align="center">
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
-							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="criarDelete();">Excluir</button>
+							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
 						<div>	
 							<br>
 							
@@ -104,7 +105,7 @@
 						</div>
 							
 					</form>
-						<h4 class="msg" align="center">${msg}</h4>
+						<span id="msg">${msg}</span>
 
 
 
@@ -125,9 +126,9 @@
 </body>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"	crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
+
 
 
 <script type="text/javascript">
@@ -180,11 +181,48 @@
 	}
 	
 	function criarDelete(){
+		
+		if(confirm('Deseja realmente excluir o Usuário?')){
+		
 		document.getElementById("formUser").method = 'get';
 		document.getElementById("acao").value = 'deletar';
 		document.getElementById("formUser").submit();
+		}
+	}
+	
+	function deleteComAjax(){
+		if(confirm("Deseja realmente excluir os dados?")){
+			var urlAction = document.getElementById('formUser').action;
+			var idUser = document.getElementById('id').value;
+			
+			$.ajax({
+				
+				method: "get",
+				url : urlAction,
+				data : "id=" + idUser + '&acao=deletarajax',
+				success: function (response){
+					
+					limparForm();
+					document.getElementById('msg').textContent = response;
+				}
+				
+			}).fail(function(xhr, status, errorThrown){
+				alert('Erro ao deletar usuário por id: '+ xhr.responseText);
+				
+			});
+			
+		}
 	}
 	
 </script>
 
 </html>
+
+
+
+
+
+
+
+
+

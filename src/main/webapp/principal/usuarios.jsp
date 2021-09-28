@@ -59,7 +59,7 @@
 
 					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
 
-					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post">
+					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
 						<div class="form-group form-default">
 								<label class="float-label">ID:</label>
 								<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modolLogin.id}">
@@ -91,7 +91,7 @@
 							<br />
 						</div>
 						<div align="center">
-							<button class="btn btn-primary waves-effect waves-light">Novo</button>
+							<button class="btn btn-primary waves-effect waves-light" onclick="limparForm()">Novo</button>
 							<button class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button class="btn btn-danger waves-effect waves-light">Excluir</button>
 						<div>	
@@ -168,7 +168,13 @@
 		setTimeout('time()',500);
 		}
 	
-	
+	function limparForm(){
+		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/
+		
+		for (p = 0; p < elementos.length; p++){
+			elementos[p].value = '';
+		}
+	}
 	
 </script>
 

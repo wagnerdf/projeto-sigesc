@@ -60,6 +60,9 @@
 					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
 
 					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
+					
+						<input type="hidden" name="acao" id="acao" value="">
+					
 						<div class="form-group form-default">
 								<label class="float-label">ID:</label>
 								<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modolLogin.id}">
@@ -91,9 +94,9 @@
 							<br />
 						</div>
 						<div align="center">
-							<button class="btn btn-primary waves-effect waves-light" onclick="limparForm()">Novo</button>
-							<button class="btn btn-success waves-effect waves-light">Salvar</button>
-							<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
+							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
+							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="criarDelete();">Excluir</button>
 						<div>	
 							<br>
 							
@@ -174,6 +177,12 @@
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
+	}
+	
+	function criarDelete(){
+		document.getElementById("formUser").method = 'get';
+		document.getElementById("acao").value = 'deletar';
+		document.getElementById("formUser").submit();
 	}
 	
 </script>

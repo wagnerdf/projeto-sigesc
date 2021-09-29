@@ -1,6 +1,9 @@
 package br.sigesc.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.sigesc.dao.DAOUsuarioRepository;
 import br.sigesc.model.ModelLogin;
@@ -46,13 +49,36 @@ public class ServLetUsuarioController extends HttpServlet {
 					
 					daoUsuarioRepository.deletarUser(idUser);
 					
-					request.setAttribute("msg", "Excluido com sucesso!");	
-					
 					response.getWriter().write("Excluido com sucesso!");
 					
-			}else {
-				request.getRequestDispatcher("principal/usuarios.jsp").forward(request, response);
 			}
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjax")) {
+				
+				String nomeBusca = request.getParameter("nomeBusca");
+				
+ 				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca);
+				
+ 				ObjectMapper mapper = new ObjectMapper();
+ 				String json = mapper.writeValueAsString(dadosJsonUser);
+ 				
+				response.getWriter().write(json);
+				
+		}
+		else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
+			
+			String id = request.getParameter("id");
+			
+			ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(id);
+			
+			request.setAttribute("msg", "Usuário em edição");
+			request.setAttribute("modolLogin", modelLogin);
+			request.getRequestDispatcher("principal/usuarios.jsp").forward(request, response);
+			 
+		}
+			
+		else {
+				request.getRequestDispatcher("principal/usuarios.jsp").forward(request, response);
+		}
 			
 			
 			

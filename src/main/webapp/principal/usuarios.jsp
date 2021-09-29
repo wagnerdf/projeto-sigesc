@@ -98,6 +98,7 @@
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
+							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
 						<div>	
 							<br>
 							
@@ -124,6 +125,48 @@
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Usuário</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Nome" aria-label="nome" id="nomeBusca" aria-describedby="button-addon2">
+						
+				<button class="btn btn-primary waves-effect waves-light" type="button" id="button-addon2" onclick="buscarUsuario();">Buscar</button>
+			</div>
+		<div style="height: 300px;overflow: scroll;">
+			<table class="table" id="tabelaresultados">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nome</th>
+			      <th scope="col">Ver</th>
+			    </tr>
+			  </thead>
+			  
+			  <tbody>
+			  </tbody>
+			  
+			</table>
+			
+		</div>
+		<span id="totalResultados"></span>
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Modal -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"	crossorigin="anonymous"></script>
@@ -192,6 +235,7 @@
 	
 	function deleteComAjax(){
 		if(confirm("Deseja realmente excluir os dados?")){
+			
 			var urlAction = document.getElementById('formUser').action;
 			var idUser = document.getElementById('id').value;
 			
@@ -212,6 +256,54 @@
 			});
 			
 		}
+	}
+	
+	function buscarUsuario(){
+		var nomeBusca = document.getElementById('nomeBusca').value;
+		
+		if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != ''){/*Validando que tem que ter valor pra buscar no banco*/
+			
+			var urlAction = document.getElementById('formUser').action;
+			
+			$.ajax({
+				
+				method: "get",
+				url : urlAction,
+				data : "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
+				success: function (response){
+					
+				var json = JSON.parse(response);
+				
+				// console.info(json); /*informa internamente no navegador a lista (CONTROL+SHIFT+J) para mostrar*/
+					
+				$('#tabelaresultados > tbody > tr').remove();
+				
+				for(var p = 0; p < json.length; p++){
+					
+					$('#tabelaresultados > tbody').append('<tr> <td>'+json[p].id+'</td><td> '+json[p].nome+' </td> <td> <button onclick="verEditar('+json[p].id+')" type="button" class="btn btn-info">Ver</button> </td> </tr>');
+				}
+				
+				document.getElementById('totalResultados').textContent = 'Resultados: ' + json.length;
+				
+				}
+				
+			}).fail(function(xhr, status, errorThrown){
+				alert('Erro ao buscar usuário por nome: '+ xhr.responseText);
+				
+			});
+			
+		
+		}
+		
+	}
+	
+	function verEditar(id){
+		
+		var urlAction = document.getElementById('formUser').action;
+		
+		window.location.href = urlAction + '?acao=buscarEditar&id='+id;
+		  	
+		
 	}
 	
 </script>

@@ -20,13 +20,14 @@
 	<div id="txt"></div>	
 </div>
 
-<div id="info-opcoes-tema">
+<div id="info-opcoes-tema-escolha">
 <span class="style1">Opções de Temas</span>
 </div>
 
 <div id="info-opcoes-tema-escolha" align="center">
-<input type="radio" name="choice" value="none" onClick="chooseStyle(this.value, 30)" checked="checked">Tema padrão<br>
-<input type="radio" name="choice" value="blue-theme" onClick="chooseStyle(this.value, 30)">Tema Azul<br>
-<input type="radio" name="choice" value="brown-theme" onClick="chooseStyle(this.value, 30)">Tema Verde<br>
+<input type="radio" name="choice" value="none" onClick="chooseStyle(this.value, 30)" checked="checked"> Tema padrão<br>
+<input type="radio" name="choice" value="blue-theme" onClick="chooseStyle(this.value, 30)"> Tema Azul<br>
+<input type="radio" name="choice" value="brown-theme" onClick="chooseStyle(this.value, 30)"> Tema Verde<br>
 </div>
+
 

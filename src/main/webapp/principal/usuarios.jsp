@@ -13,6 +13,7 @@
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
+	    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/sigesc.css" type="text/css"/>
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		
@@ -54,65 +55,78 @@
 			<div id="sub-conteudo">
 
 	
-				<div class="w-100 p-3"><!----------------------------- Page-body start ------------------------->
+				<div class="w-100 p-2" id="menu-vertical"><!----------------------------- Page-body start ------------------------->
 
 
 
-					<h5 align="center" class="sub-title">Cadastro de Usuário</h5>
+					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 
 					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
 					
 						<input type="hidden" name="acao" id="acao" value="">
 					
 						<div class="form-group form-default">
-								<label class="float-label">ID:</label>
-								<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modolLogin.id}">
-								<span class="form-bar"></span>
+																
+								<div class="form-floating">
+								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
+								 <label for="floatingInput">ID:</label>
+								</div>
 
 						</div>
 						<div class="form-group form-default">
-							<label class="float-label">Nome:</label> 
-							<input type="text"	name="nome" id="nome" class="form-control" required="required" value="${modolLogin.nome}"> 
-							<span class="form-bar"></span>
+
+						<div class="form-floating">
+						  <input type="text" name="nome" class="form-control form-control-sm" id="nome" placeholder="Seu nome aqui" required="required" value="${modolLogin.nome}">
+						  <label for="floatingPassword">Nome:</label>
+						</div>
 
 						</div>
 						<div class="form-group form-default">
-							<label class="float-label">Email:</label> 
-							<input type="email" name="email" id="email" class="form-control" required="required" autocomplete="off" value="${modolLogin.email}"> 
-							<span class="form-bar"></span>
+													
+							<div class="form-floating">
+							<input type="email" name="email" id="email" class="form-control form-control-sm" required="required" placeholder="seu@email.com" autocomplete="off" value="${modolLogin.email}">
+							<label for="floatingInput">Email</label>
+							</div>
+							
 
 						</div>
 						<div class="form-group form-default">
-							<label class="float-label">login:</label> 
-							<input type="text" name="login" id="login" class="form-control" required="required" autocomplete="off" value="${modolLogin.login}"> 
-							<span class="form-bar"></span>
+														
+							<div class="form-floating">
+							  <input type="text" name="login" class="form-control form-control-sm" id="login" placeholder="Seu login aqui" autocomplete="off" required="required" value="${modolLogin.login}">
+							  <label for="floatingInput">Login:</label>
+							</div>
 
 						</div>
 						<div>
-							<label class="float-label">Password:</label> 
-							<input type="password" name="senha" id="senha" class="form-control"	required="required" autocomplete="off"	value="${modolLogin.senha}"> 
-							<span class="form-bar"></span>
-							<br />
+							
+						<div class="form-floating">
+							<input type="password" name="senha" id="senha" class="form-control form-control-sm" required="required" placeholder="Seu senha aqui" autocomplete="off" value="${modolLogin.senha}">
+							<label for="floatingInput">Password:</label>
+						</div>							
+							
+							
 						</div>
-						<div align="center">
+						<h6>&nbsp;</h6>	
+						<div align="center" >
+							
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
 							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
-						<div>	
-							<br>
-							
-						</div>	
+
 						</div>
-							
+							<h6>&nbsp;</h6>	
+										
 					</form>
-						<span id="msg">${msg}</span>
+						<div class="msg">
+							<span id="msg">${msg}</span>
+							</div>
 
 
 
 				</div><!------------------------------------ Page-body end --------------------------------------->
 
-	
 			</div>
 			<!-- 4 -->	   
 	      		
@@ -222,6 +236,7 @@
 			elementos[p].value = '';
 		}
 	}
+	 
 	
 	function criarDelete(){
 		
@@ -233,28 +248,36 @@
 		}
 	}
 	
-	function deleteComAjax(){
-		if(confirm("Deseja realmente excluir os dados?")){
-			
-			var urlAction = document.getElementById('formUser').action;
-			var idUser = document.getElementById('id').value;
-			
-			$.ajax({
-				
-				method: "get",
-				url : urlAction,
-				data : "id=" + idUser + '&acao=deletarajax',
-				success: function (response){
+function deleteComAjax(){
+		
+		if(document.getElementById("id").value == ""){
+			alert('Por favor, carregue um usuario para deletar');
+			document.getElementById("id").focus();
+			return false	
+		}else{
+				if(confirm("Deseja realmente excluir os dados?")){
 					
-					limparForm();
-					document.getElementById('msg').textContent = response;
+					
+					var urlAction = document.getElementById('formUser').action;
+					var idUser = document.getElementById('id').value;
+					
+					$.ajax({
+						
+						method: "get",
+						url : urlAction,
+						data : "id=" + idUser + '&acao=deletarajax',
+						success: function (response){
+							
+							limparForm();
+							document.getElementById('msg').textContent = response;
+						}
+						
+					}).fail(function(xhr, status, errorThrown){
+						alert('Erro ao deletar usuário por id: '+ xhr.responseText);
+						
+					});
+					
 				}
-				
-			}).fail(function(xhr, status, errorThrown){
-				alert('Erro ao deletar usuário por id: '+ xhr.responseText);
-				
-			});
-			
 		}
 	}
 	
@@ -306,6 +329,9 @@
 		
 	}
 	
+	
+	
+
 </script>
 
 </html>

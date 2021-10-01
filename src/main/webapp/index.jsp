@@ -13,7 +13,18 @@
 
 <title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 
+<style type="text/css">
+form{
+     position: absolute;
+     top: 20%;
+     left: 41%;
+     right: 41%;
+  }  
+</style>
+
 </head>
+
+
 <body>
 
 
@@ -22,7 +33,7 @@
 			name="url">
 
 		<p align="center">
-			<img src="<%=request.getContextPath()%>/assets/imgs/sigesc01.jpg" width="336" height="136" />
+			<img src="<%=request.getContextPath()%>/assets/imgs/sigesc01.jpg" width="240" height="95" />
 		</p>
 
 		<div class="mb-3">

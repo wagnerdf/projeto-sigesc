@@ -9,18 +9,25 @@ h5{
   	   color: #ff0000;
   	   background-color: #fff3cd;
   	   border-color: #ffecb5;
+  	   
+  	   
   } 
 
 body {
 	background-color: #F8CEBA;
 }
 
-form{
-     position: absolute;
-     top: 20%;
-     left: 41%;
-     right: 41%;
-  }   
 .container{
     max-width: 50%;  
+}
+
+#menu-vertical{
+  
+  
+}
+#principal{
+  margin:0 auto;
+  border:#000000 1px solid;
+  width:790px;
+  height:1200px
 }

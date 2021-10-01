@@ -35,10 +35,14 @@ div#esquerda {
 }
 
 div#sub-conteudo {
+	
+	width: 110px;
+	height: 110px;
+	overflow: auto;
 	background-color: #ABB4FC;
 	float: left;
 	margin-bottom: 5px;
-	min-height: 430px;
+	min-height: 452px;
 	width: 831px; /* 145px - 145px - 5px - 5px */
 }
 
@@ -66,7 +70,7 @@ div#conteudo {
 
 div#info {
 	background-color: #ABB4FC;
-	height: 431px;
+	height: 452px;
 	width: 140px;
 }
 
@@ -74,7 +78,7 @@ div#top-aniversarios,
 div#top-arquivos {
 	background-color: #ABB4FC;
 	margin-bottom: 5px;
-	min-height: 212px;
+	min-height: 223.5px;
 	width: 145px;
 }
 

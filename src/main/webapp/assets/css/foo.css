@@ -48,7 +48,7 @@ div#sub-conteudo2{
 div#info-opcoes-tema-escolha{
 	text-align: left;
 	padding-top: 3px;
-	padding-left: 25px;
+	padding-left: 20px;
 	color: #888;
 }
 
@@ -92,4 +92,25 @@ div.top-items {
 /* SPAN */
 span.info-texto-destaque {
 	font-weight: bold;
+}
+.padraoText{
+    
+     
+    background-color: #FAD8C7;
+    
+    
+}
+.azulText{
+    
+     
+  	background-color:#ABB4FC;
+
+    
+}
+.verdeText{
+    
+       
+  	background-color: #9BFFD7;
+
+    
 }

@@ -41,6 +41,9 @@
 					<input type="button" name="Resultado" value="Resultado">
 					
 			</div>
+			
+			
+			
 			</TD>
 		</TR>
 	</TABLE>

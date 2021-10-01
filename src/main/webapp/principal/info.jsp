@@ -20,14 +20,21 @@
 	<div id="txt"></div>	
 </div>
 
-<div id="info-opcoes-tema-escolha">
-<span class="style1">Opções de Temas</span>
+<div>
+<br>
+<div id="info-texto">
+<span class="info-texto-destaque">Opções de Temas</span>
 </div>
 
-<div id="info-opcoes-tema-escolha" align="center">
-<input type="radio" name="choice" value="none" onClick="chooseStyle(this.value, 30)" checked="checked"> Tema padrão<br>
-<input type="radio" name="choice" value="blue-theme" onClick="chooseStyle(this.value, 30)"> Tema Azul<br>
-<input type="radio" name="choice" value="brown-theme" onClick="chooseStyle(this.value, 30)"> Tema Verde<br>
+<div class="w-auto p-2" align="center" id="info-texto">
+ 
+  <select class="form-select" aria-label="Default select example" onchange="chooseStyle(this.value, 30)" >
+  <optgroup label="Cores">
+  <option class="padraoText" selected value="none">Padrão</option>
+  <option class="azulText" value="blue-theme">Azul</option>
+  <option class="verdeText" value="brown-theme">Verde</option>
+  </optgroup> 	
+</select>
+
 </div>
-
-
+</div>

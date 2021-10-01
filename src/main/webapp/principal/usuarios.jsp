@@ -76,7 +76,7 @@
 						<div class="form-group form-default">
 
 						<div class="form-floating">
-						  <input type="text" name="nome" class="form-control form-control-sm" id="nome" placeholder="Seu nome aqui" required="required" value="${modolLogin.nome}">
+						  <input type="text" name="nome" class="form-control form-control-sm" id="nome" placeholder="Seu nome aqui" required="required" onfocus="this.value='';" value="${modolLogin.nome}">
 						  <label for="floatingPassword">Nome:</label>
 						</div>
 
@@ -84,7 +84,7 @@
 						<div class="form-group form-default">
 													
 							<div class="form-floating">
-							<input type="email" name="email" id="email" class="form-control form-control-sm" required="required" placeholder="seu@email.com" autocomplete="off" value="${modolLogin.email}">
+							<input type="email" name="email" id="email" class="form-control form-control-sm" required="required" placeholder="seu@email.com" autocomplete="off" onfocus="this.value='';" value="${modolLogin.email}">
 							<label for="floatingInput">Email</label>
 							</div>
 							
@@ -93,7 +93,7 @@
 						<div class="form-group form-default">
 														
 							<div class="form-floating">
-							  <input type="text" name="login" class="form-control form-control-sm" id="login" placeholder="Seu login aqui" autocomplete="off" required="required" value="${modolLogin.login}">
+							  <input type="text" name="login" class="form-control form-control-sm" id="login" placeholder="Seu login aqui" autocomplete="off" required="required" onfocus="this.value='';" value="${modolLogin.login}">
 							  <label for="floatingInput">Login:</label>
 							</div>
 
@@ -101,7 +101,7 @@
 						<div>
 							
 						<div class="form-floating">
-							<input type="password" name="senha" id="senha" class="form-control form-control-sm" required="required" placeholder="Seu senha aqui" autocomplete="off" value="${modolLogin.senha}">
+							<input type="password" name="senha" id="senha" class="form-control form-control-sm" required="required" placeholder="Seu senha aqui" autocomplete="off" onfocus="this.value='';" value="${modolLogin.senha}">
 							<label for="floatingInput">Password:</label>
 						</div>							
 							

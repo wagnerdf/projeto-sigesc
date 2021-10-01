@@ -21,13 +21,10 @@ body {
     max-width: 50%;  
 }
 
-#menu-vertical{
-  
-  
-}
 #principal{
   margin:0 auto;
   border:#000000 1px solid;
   width:790px;
   height:1200px
 }
+

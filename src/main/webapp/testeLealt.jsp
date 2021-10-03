@@ -10,49 +10,70 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/sigesc.css" type="text/css"/>
+
 
 </head>
 <body>
 
-	<div align="center">
-	<TABLE border=1>
+	<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<TR>
-			<TD WIDTH=100>
-			<div>
-			<img src="<%=request.getContextPath()%>/assets/imgs/condominio.jpg" width="225" height="318">
-			</div>
-			</TD>
-			<TD WIDTH=200>
-			<div>
-			<h4>
-						<span class="style1">Enquete:</span>
-					</h4>
-					<br><h5>Como você usuário avalia o portal Sigesc 
-					         adquirido para automatizar as operações realizadas diariamente no
-							condomínio?</h5> 
-							
-					<input type="radio">Excelente<br>
-				   	<input type="radio">Muito Bom<br>
-				    <input type="radio">Bom<br>
-					<input type="radio">Ruim<br> 
-					<input type="submit" name="Votar" value="Votar"> 
-					<input type="button" name="Resultado" value="Resultado">
-					
-			</div>
-			
-			
-			
-			</TD>
-		</TR>
-	</TABLE>
-	</div>
+<style>
+.inputstl { 
+    padding: 9px; 
+    border: solid 1px #0077B0; 
+    outline: 0; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #C6ECFF), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #FFFFFF, #C6ECFF 1px, #FFFFFF 25px); 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+ }
+.selcls { 
+    padding: 9px; 
+    border: solid 1px #517B97; 
+    outline: 0; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
 
+    }  
+   
+</style>
 
+</head>
 
+<body>
 
 
+
+
+
+
+<select class="selectpicker" multiple>
+  <option>Mustard</option>
+  <option>Ketchup</option>
+  <option>Relish</option>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -82,8 +103,4 @@
 })();
 
 </script>
-
-
-
-</body>
 </html>

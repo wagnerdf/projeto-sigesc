@@ -2,8 +2,8 @@
 
 <div class="top-items">
 	 
-	 <th><a href="">Caixa de Entrada(10)</a></th><br/>
-	 <th><a href="">Itens Enviados(5)</a></th><br/>
-	 <th><a href="">Itens Arquivados(20)</a></th>	
+	 <a href="">Caixa de Entrada(10)</a><br/>
+	 <a href="">Itens Enviados(5)</a><br/>
+	 <a href="">Itens Arquivados(20)</a>	
 		
 </div>

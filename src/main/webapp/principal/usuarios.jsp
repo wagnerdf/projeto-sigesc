@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<meta charset="ISO-8859-1">
 	
 		<!-- Bootstrap CSS -->
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+    	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap.min.css"> 
 		
 	
 	    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
@@ -19,7 +19,7 @@
 		
 		
 		/***********************************************
-		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+		* Style Sheet Switcher v1.1- Â© Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
 		* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
 		***********************************************/
@@ -38,8 +38,34 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 		
-		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
-	</head>
+<style>
+.inputstl { 
+    padding: 9px; 
+    border: solid 1px #0077B0; 
+    outline: 0; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #C6ECFF), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #FFFFFF, #C6ECFF 1px, #FFFFFF 25px); 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+
+    } 
+.selcls { 
+    padding: 9px; 
+    border: solid 1px #517B97; 
+    outline: 0; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+
+    }  
+   
+</style>
+		
+		<title>SIGESC - Um Portal de TransparÃªncia e GestÃ£o para CondomÃ­nios</title>
+</head>
 	
 	<body id="corpo" onload="time()">
 		<div id="geral"> <!-- 0 -->
@@ -59,7 +85,7 @@
 
 
 
-					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
+					<h6 align="center" class="sub-title">Cadastro de UsuÃ¡rio</h6>
 
 					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
 					
@@ -76,7 +102,7 @@
 						<div class="form-group form-default">
 
 						<div class="form-floating">
-						  <input type="text" name="nome" class="form-control form-control-sm" id="nome" placeholder="Seu nome aqui" required="required" onfocus="this.value='';" value="${modolLogin.nome}">
+						  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
 						  <label for="floatingPassword">Nome:</label>
 						</div>
 
@@ -84,7 +110,7 @@
 						<div class="form-group form-default">
 													
 							<div class="form-floating">
-							<input type="email" name="email" id="email" class="form-control form-control-sm" required="required" placeholder="seu@email.com" autocomplete="off" onfocus="this.value='';" value="${modolLogin.email}">
+							<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
 							<label for="floatingInput">Email</label>
 							</div>
 							
@@ -93,7 +119,7 @@
 						<div class="form-group form-default">
 														
 							<div class="form-floating">
-							  <input type="text" name="login" class="form-control form-control-sm" id="login" placeholder="Seu login aqui" autocomplete="off" required="required" onfocus="this.value='';" value="${modolLogin.login}">
+							  <input type="text" name="login" class="form-control inputstl" id="login" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
 							  <label for="floatingInput">Login:</label>
 							</div>
 
@@ -101,7 +127,7 @@
 						<div>
 							
 						<div class="form-floating">
-							<input type="password" name="senha" id="senha" class="form-control form-control-sm" required="required" placeholder="Seu senha aqui" autocomplete="off" onfocus="this.value='';" value="${modolLogin.senha}">
+							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="off"  value="${modolLogin.senha}">
 							<label for="floatingInput">Password:</label>
 						</div>							
 							
@@ -145,7 +171,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Usuário</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de UsuÃ¡rio</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -183,7 +209,7 @@
 <!-- End Modal -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"	crossorigin="anonymous"></script>
+	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 
 
@@ -240,7 +266,7 @@
 	
 	function criarDelete(){
 		
-		if(confirm('Deseja realmente excluir o Usuário?')){
+		if(confirm('Deseja realmente excluir o UsuÃ¡rio?')){
 		
 		document.getElementById("formUser").method = 'get';
 		document.getElementById("acao").value = 'deletar';
@@ -273,7 +299,7 @@ function deleteComAjax(){
 						}
 						
 					}).fail(function(xhr, status, errorThrown){
-						alert('Erro ao deletar usuário por id: '+ xhr.responseText);
+						alert('Erro ao deletar usuÃ¡rio por id: '+ xhr.responseText);
 						
 					});
 					
@@ -311,7 +337,7 @@ function deleteComAjax(){
 				}
 				
 			}).fail(function(xhr, status, errorThrown){
-				alert('Erro ao buscar usuário por nome: '+ xhr.responseText);
+				alert('Erro ao buscar usuÃ¡rio por nome: '+ xhr.responseText);
 				
 			});
 			

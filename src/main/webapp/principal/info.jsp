@@ -28,7 +28,7 @@
 
 <div class="w-auto p-2" align="center" id="info-texto">
  
-  <select class="form-control selcls" aria-label="Default select example" onchange="chooseStyle(this.value, 30)" >
+  <select class="form-control form-control-sm" aria-label="Default select example" onchange="chooseStyle(this.value, 30)" >
   <optgroup label="Cores">
   <option class="padraoText" selected value="none">Padrão</option>
   <option class="azulText" value="blue-theme">Azul</option>

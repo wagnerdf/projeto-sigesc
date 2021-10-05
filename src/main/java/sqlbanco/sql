@@ -18,6 +18,18 @@ CREATE TABLE public.model_login
     CONSTRAINT login_unique UNIQUE (login)
 )
 
+
+CREATE TABLE public.enquete
+(
+    id integer NOT NULL,
+    pergunta character varying(500) COLLATE pg_catalog."default" NOT NULL,
+    q1 character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    q2 character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    q3 character varying(100) COLLATE pg_catalog."default",
+    q4 character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT enquete_pkey PRIMARY KEY (id)
+)
+
 TABLESPACE pg_default;
 
 ALTER TABLE public.model_login

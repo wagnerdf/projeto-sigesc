@@ -16,43 +16,43 @@
     <li><a href="#">|&nbsp;Usuários&nbsp;|</a>
       	<ul>
            		
-           		 <li><a href="frame.jsp?op=1">Cadastrar Funcionário</a></li>                 
+           		 <li><a href="">Cadastrar Funcionário</a></li>                 
                  <li><a href="<%= request.getContextPath() %>/principal/usuarios.jsp">Cadastrar Usuários</a></li>
-                 <li><a href="frame.jsp?op=3">Cadastrar Login</a></li>
-                 <li><a href="/Sigesc/ListarFuncionario.do">Pesquisar Funcionário</a></li>
-                 <li><a href="/Sigesc/ListarUsuario.do">Pesquisar Usuários</a></li>
-                 <li><a href="/Sigesc/ListarLogin.do">Pesquisar Login</a></li>
+                 <li><a href="">Cadastrar Login</a></li>
+                 <li><a href="">Pesquisar Funcionário</a></li>
+                 <li><a href="">Pesquisar Usuários</a></li>
+                 <li><a href="">Pesquisar Login</a></li>
         </ul>
      </li>   
     <li><a href="#">|&nbsp;Serviços&nbsp;|</a>
        <ul> 
        		<li><a href="/boleto/samples/form.html" target="_Blank" >Módulo Boleto</a></li>
-            <li><a href="frame.jsp?op=7" >Cadastrar Fornecedor</a></li>
-            <li><a href="frame.jsp?op=8">Agendar Salão de Festas</a></li>
-             <li><a href="frame.jsp?op=22">Agendar Reunião Virtual</a></li>
-            <li><a href="frame.jsp?op=9">Solicitar Manutenção</a></li>
-            <li><a href="frame.jsp?op=23">Upload de Arquivos</a></li>
+            <li><a href="" >Cadastrar Fornecedor</a></li>
+            <li><a href="">Agendar Salão de Festas</a></li>
+             <li><a href="">Agendar Reunião Virtual</a></li>
+            <li><a href="">Solicitar Manutenção</a></li>
+            <li><a href="">Upload de Arquivos</a></li>
        </ul>
     </li>
     <li><a href="#">|&nbsp;Consulta&nbsp;|</a>
           <ul>
-           	<li><a href="frame.jsp?op=10">Comunicados</a></li>
-            <li><a href="frame.jsp?op=11">Ata de Reunião</a></li>
-            <li><a href="frame.jsp?op=12">Relatório Financeiro</a></li>
-            <li><a href="frame.jsp?op=13">Normas e Regimentos</a></li>
-             <li><a href="/Sigesc/ListarReuniao.do">Listar Agenda de Reunião</a></li>
-            <li><a href="/Sigesc/ListarLocacao.do">Agenda Salão de Festas</a></li>
-            <li><a href="/Sigesc/ListarFornecedores.do">Relação de Fornecedores</a></li>
-            <li><a href="/Sigesc/ListarReparos.do">Relação de Manutenção</a></li>
+           	<li><a href="">Comunicados</a></li>
+            <li><a href="">Ata de Reunião</a></li>
+            <li><a href="">Relatório Financeiro</a></li>
+            <li><a href="">Normas e Regimentos</a></li>
+             <li><a href="">Listar Agenda de Reunião</a></li>
+            <li><a href="">Agenda Salão de Festas</a></li>
+            <li><a href="">Relação de Fornecedores</a></li>
+            <li><a href="">Relação de Manutenção</a></li>
             
         </ul>
     </li>
     <li><a href="#">|&nbsp;Comunicação&nbsp;|</a>
           <ul>
-            <li><a href="frame.jsp?op=14">Enquete</a></li>
-            <li><a href="frame.jsp?op=15">Sugestão</a></li>
-            <li><a href="frame.jsp?op=16">Mensagem</a></li>
-            <li><a href="frame.jsp?op=17">Reclamaçao</a></li>         
+            <li><a href="<%= request.getContextPath() %>/principal/enquete.jsp">Enquete</a></li>
+            <li><a href="">Sugestão</a></li>
+            <li><a href="">Mensagem</a></li>
+            <li><a href="">Reclamaçao</a></li>         
            </ul>
     </li>
     

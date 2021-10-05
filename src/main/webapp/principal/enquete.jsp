@@ -37,7 +37,7 @@
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-		
+
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
@@ -59,54 +59,76 @@
 
 
 
-					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
+					<h6 align="center" class="sub-title">Criar enquetes</h6>
 
-					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
+					<form class="form-material" action="<%=request.getContextPath()%>/ServLetEnqueteController"	method="post" id="formUser">
 					
 						<input type="hidden" name="acao" id="acao" value="">
 					
-						<div class="form-group form-control-sm">
-																
+						<table class="w-100 p-2" border="1" >	
+						<tr>
+							<td>
 								<div class="form-floating">
-								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
+								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolEnquete.id}">
 								 <label for="floatingInput">ID:</label>
 								</div>
-
-						</div>
-						<div class="form-group form-default">
-
-						<div class="form-floating">
-						  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
-						  <label for="floatingPassword">Nome:</label>
-						</div>
-
-						</div>
-						<div class="form-group form-default">
-													
+								
+								<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label">Descreva uma questão para a enquete.</label>
+								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								</div>
+							
+							
+							</td>
+							<td>
+							
+							<div class="form-group form-default">
 							<div class="form-floating">
-							<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
-							<label for="floatingInput">Email</label>
+							  <input type="text" name="q1" class="form-control inputstl" id="q1" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q1}">
+							  <label for="floatingInput">1ª Resposta:</label>
+							</div>
+							</div>
+						
+							<div class="form-group form-default">
+							<div class="form-floating">
+							  <input type="text" name="q2" class="form-control inputstl" id="q2" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q2}">
+							  <label for="floatingInput">2ª Resposta:</label>
+							</div>
 							</div>
 							
-
-						</div>
-						<div class="form-group form-default">
-														
+							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="login" class="form-control inputstl" id="login" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
-							  <label for="floatingInput">Login:</label>
+							  <input type="text" name="q3" class="form-control inputstl" id="q3" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q3}">
+							  <label for="floatingInput">3ª Resposta:</label>
 							</div>
+							</div>
+								
+							<div class="form-group form-default">
+							<div class="form-floating">
+							  <input type="text" name="q4" class="form-control inputstl" id="q4" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q4}">
+							  <label for="floatingInput">4ª Resposta:</label>
+							</div>
+							</div>					
+		
+							
 
-						</div>
-						<div>
+
+						
 							
-						<div class="form-floating">
-							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="off"  value="${modolLogin.senha}">
-							<label for="floatingInput">Password:</label>
-						</div>							
+	
+							
+							</td>
+						
+						
+						</tr>
+						</table>
+						
+						
+						
+										
 							
 							
-						</div>
+						
 						<h6>&nbsp;</h6>	
 						<div align="center" >
 							
@@ -139,48 +161,6 @@
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
 </body>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Usuário</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-			<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Nome" aria-label="nome" id="nomeBusca" aria-describedby="button-addon2">
-						
-				<button class="btn btn-primary waves-effect waves-light" type="button" id="button-addon2" onclick="buscarUsuario();">Buscar</button>
-			</div>
-		<div style="height: 300px;overflow: scroll;">
-			<table class="table" id="tabelaresultados">
-			  <thead>
-			    <tr>
-			      <th scope="col">ID</th>
-			      <th scope="col">Nome</th>
-			      <th scope="col">Ver</th>
-			    </tr>
-			  </thead>
-			  
-			  <tbody>
-			  </tbody>
-			  
-			</table>
-			
-		</div>
-		<span id="totalResultados"></span>
-			</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End Modal -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>

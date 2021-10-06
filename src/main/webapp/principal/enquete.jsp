@@ -1,3 +1,4 @@
+<%@page import="br.sigesc.model.ModelEnquete"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -59,63 +60,86 @@
 
 
 
-					<h6 align="center" class="sub-title">Criar enquetes</h6>
+					<h6 align="center" class="sub-title">Enquete</h6>
 
-					<form class="form-material" action="<%=request.getContextPath()%>/ServLetEnqueteController"	method="post" id="formUser">
+					<form class="form-material" action="<%=request.getContextPath()%>/ServletEnquete"	method="post" id="formUser">
 					
 						<input type="hidden" name="acao" id="acao" value="">
 					
-						<table class="w-100 p-2" border="1" >	
+						<table class="w-100 p-3">	
 						<tr>
 							<td>
+								<br>
 								<div class="form-floating">
 								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolEnquete.id}">
 								 <label for="floatingInput">ID:</label>
 								</div>
-								
+								<br>
 								<div class="mb-3">
 								<label for="exampleFormControlTextarea1" class="form-label">Descreva uma questão para a enquete.</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								<textarea name="pergunta" class="form-control" id="exampleFormControlTextarea1" rows="5" autofocus required="required">${modolEnquete.pergunta}</textarea>
 								</div>
+								<br>
+								<div class="msg">
+								<span id="msg">${msg}</span>
+								</div>
+								
+								
+								
 							
 							
 							</td>
+							<td><div><h1>&nbsp;</h1></div></td>
 							<td>
 							
+							
+							<br>
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q1" class="form-control inputstl" id="q1" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q1}">
-							  <label for="floatingInput">1ª Resposta:</label>
+							  <input type="text" name="q1" class="form-control inputstl" id="q1" placeholder="Informe a opção 1" required="required"  value="${modolLogin.q1}">
+							  <label for="floatingInput">1ª Opção:</label>
 							</div>
 							</div>
-						
+							
+							
+							<br>
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q2" class="form-control inputstl" id="q2" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q2}">
-							  <label for="floatingInput">2ª Resposta:</label>
+							  <input type="text" name="q2" class="form-control inputstl" id="q2" placeholder="Informe a opção 2" required="required"  value="${modolLogin.q2}">
+							  <label for="floatingInput">2ª Opção:</label>
 							</div>
+							</div>
+							
+							<div class="form-check form-switch">
+							  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3" onclick="habilitarq3(this.checked)">
+							  <label class="form-check-label" for="flexSwitchCheckDefault">Adicionar 3ª Opção:</label>
 							</div>
 							
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q3" class="form-control inputstl" id="q3" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q3}">
-							  <label for="floatingInput">3ª Resposta:</label>
+							  <input type="text" name="q3" class="form-control inputstl" id="q3" disabled="disabled" placeholder="Informe a opção 3" value=" " required="required"  value="${modolLogin.q3}">
+							  <label for="floatingInput">3ª Opção:</label>
 							</div>
 							</div>
 								
+							<div class="form-check form-switch">
+							  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4" onclick="habilitarq4(this.checked)">
+							  <label class="form-check-label" for="flexSwitchCheckDefault" >Adicionar 4ª Opção:</label>
+							</div>	
+								
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q4" class="form-control inputstl" id="q4" placeholder="Informe a resposta 1" required="required"  value="${modolLogin.q4}">
-							  <label for="floatingInput">4ª Resposta:</label>
+							  <input type="text" name="q4" class="form-control inputstl" id="q4" disabled="disabled" placeholder="Informe a opção 4" value=" " required="required" value="${modolLogin.q4}">
+							  <label for="floatingInput">4ª Opção:</label>
 							</div>
 							</div>					
 		
-							
+							<input type="hidden" name="r1" value="0" value="${modolLogin.r1}">
+							<input type="hidden" name="r2" value="0" value="${modolLogin.r2}">
+							<input type="hidden" name="r3" value="0" value="${modolLogin.r3}">
+							<input type="hidden" name="r4" value="0" value="${modolLogin.r4}">
 
-
-						
-							
-	
+					
 							
 							</td>
 						
@@ -138,12 +162,10 @@
 							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
 
 						</div>
-							<h6>&nbsp;</h6>	
+							
 										
 					</form>
-						<div class="msg">
-							<span id="msg">${msg}</span>
-							</div>
+						
 
 
 
@@ -228,7 +250,7 @@
 		}
 	}
 	
-function deleteComAjax(){
+	function deleteComAjax(){
 		
 		if(document.getElementById("id").value == ""){
 			alert('Por favor, carregue um usuario para deletar');
@@ -309,7 +331,57 @@ function deleteComAjax(){
 		
 	}
 	
+	function habilitarq3(selecionado) {
+		
+		if(document.getElementById('flexSwitchCheckDefault3').checked != false || document.getElementById('flexSwitchCheckDefault3').checked != true && document.getElementById('flexSwitchCheckDefault4').checked != true){
+	    
+			if(document.getElementById('q3').checked != selecionado){
+				
+				document.getElementById('q3').disabled = false;
+				
 	
+			}
+			else{
+				document.getElementById('q3').checked = false;
+				document.getElementById('q3').disabled = true;
+				document.getElementById('q3').value = "";
+	
+			}
+		
+		}else{
+			alert("Seleção não permitida, opção 3ª e 4ª serão desabilitadas");
+			document.getElementById('flexSwitchCheckDefault4').checked = false;
+			document.getElementById('q4').disabled = true;
+			document.getElementById('q4').value = "";
+			document.getElementById('q3').disabled = true;
+			document.getElementById('q3').value = "";
+		}
+	}
+	
+	function habilitarq4(selecionado) {
+		
+		if(document.getElementById('flexSwitchCheckDefault3').checked != false){
+		
+	    
+			if(document.getElementById('q4').checked != selecionado){
+				
+				document.getElementById('q4').disabled = false;
+	
+			}
+			else{
+				document.getElementById('q4').checked = false;
+				document.getElementById('q4').disabled = true;
+				document.getElementById('q4').value = "";
+			}
+		
+		}else{
+			
+			alert("Seleção não permitida, habilite a 3ª opção para proceguir.");
+			document.getElementById('flexSwitchCheckDefault4').checked = false;
+			document.getElementById('q4').disabled = true;
+			document.getElementById('q4').value = "";
+		}
+	}
 	
 
 </script>

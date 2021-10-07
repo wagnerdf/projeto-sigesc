@@ -29,8 +29,9 @@ form{
 
 
 	<form action="<%=request.getContextPath()%>/ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
-		<input type="hidden" value="<%=request.getParameter("url")%>"
-			name="url">
+		<input type="hidden" value="<%=request.getParameter("url")%>" name="url">
+		<input type="hidden" value="<%=request.getParameter("id")%>" name="id">
+		
 
 		<p align="center">
 			<img src="<%=request.getContextPath()%>/assets/imgs/sigesc01.jpg" width="240" height="95" />
@@ -44,8 +45,7 @@ form{
 		</div>
 
 		<div class="mb-3">
-			<label class="form-label" for="senha">Senha</label> <input	class="form-control" id="senha" name="senha" type="password"
-				required>
+			<label class="form-label" for="senha">Senha</label> <input	class="form-control" id="senha" name="senha" type="password" required>
 			<div class="invalid-feedback">Obrigatório</div>
 			<div class="valid-feedback">OK</div>
 		</div>

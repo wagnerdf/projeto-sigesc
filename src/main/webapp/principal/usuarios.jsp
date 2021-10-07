@@ -77,7 +77,7 @@
 
 						<div class="form-floating">
 						  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
-						  <label for="floatingPassword">Nome:</label>
+						  <label for="floatingInput">Nome:</label>
 						</div>
 
 						</div>
@@ -102,7 +102,7 @@
 							
 						<div class="form-floating">
 							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="off"  value="${modolLogin.senha}">
-							<label for="floatingInput">Password:</label>
+							<label for="floatingPassword">Password:</label>
 						</div>							
 							
 							

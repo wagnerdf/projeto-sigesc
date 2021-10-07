@@ -2,7 +2,7 @@ package br.sigesc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 
 import br.sigesc.connection.SingleConnectionBanco;
 import br.sigesc.model.ModelEnquete;
@@ -15,9 +15,9 @@ public class DAOEnqueteRepository {
 		connection = SingleConnectionBanco.getConnection();
 	}
 	
-	public void gravarEnquete(ModelEnquete objetoEnquete) throws Exception {
+	public ModelEnquete gravarEnquete(ModelEnquete objetoEnquete) throws Exception {
 		
-		String sql = "INSERT INTO enquete(pergunta, q1, q2, q3, q4, r1, r2, r3, r4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO enquete(pergunta, q1, q2, q3, q4, r1, r2, r3, r4, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
 		preparedSql.setString(1, objetoEnquete.getPergunta());
@@ -29,12 +29,57 @@ public class DAOEnqueteRepository {
 		preparedSql.setInt(7, objetoEnquete.getR2());
 		preparedSql.setInt(8, objetoEnquete.getR3());
 		preparedSql.setInt(9, objetoEnquete.getR4());
+		preparedSql.setLong(10, objetoEnquete.getId_usuario());
 		
 		preparedSql.execute();
 		connection.commit();
 	
+		return this.consultaEnquete(objetoEnquete.getPergunta());
 		
+		
+	}
+	
+	public ModelEnquete consultaEnquete(String pergunta) throws Exception {
+		
+		ModelEnquete modelEnquete = new ModelEnquete();
+		
+		String sql = "SELECT * FROM enquete WHERE upper(pergunta) = Upper('"+pergunta+"')";
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+				
+		ResultSet resultado = statement.executeQuery();
+		
+		
+		while(resultado.next()) {
+			
+			modelEnquete.setId(resultado.getLong("id"));
+			modelEnquete.setPergunta(resultado.getString("pergunta"));
+			modelEnquete.setQ1(resultado.getString("q1"));
+			modelEnquete.setQ2(resultado.getString("q2"));
+			modelEnquete.setQ3(resultado.getString("q3"));
+			modelEnquete.setQ4(resultado.getString("q4"));
+			modelEnquete.setR1(resultado.getInt("r1"));
+			modelEnquete.setR2(resultado.getInt("r2"));
+			modelEnquete.setR3(resultado.getInt("r3"));
+			modelEnquete.setR4(resultado.getInt("r4"));
+			modelEnquete.setId_usuario(resultado.getLong("id_usuario"));
+			
+		}
+		
+		return modelEnquete;
 	}
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

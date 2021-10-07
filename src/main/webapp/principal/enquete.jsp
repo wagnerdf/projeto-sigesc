@@ -1,5 +1,5 @@
-<%@page import="br.sigesc.model.ModelEnquete"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -62,18 +62,23 @@
 
 					<h6 align="center" class="sub-title">Enquete</h6>
 
-					<form class="form-material" action="<%=request.getContextPath()%>/ServletEnquete"	method="post" id="formUser">
+					<form class="form-material" action="<%=request.getContextPath()%>/ServletEnquete"	method="post" id="formEnquete">
 					
 						<input type="hidden" name="acao" id="acao" value="">
-					
+						
+											
 						<table class="w-100 p-3">	
 						<tr>
 							<td>
 								<br>
+								
+								<div class="form-group form-control-sm">
 								<div class="form-floating">
-								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolEnquete.id}">
+								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readOnly="readOnly" value="${modolEnquete.id}">
 								 <label for="floatingInput">ID:</label>
 								</div>
+								</div>
+								
 								<br>
 								<div class="mb-3">
 								<label for="exampleFormControlTextarea1" class="form-label">Descreva uma questão para a enquete.</label>
@@ -96,7 +101,7 @@
 							<br>
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q1" class="form-control inputstl" id="q1" placeholder="Informe a opção 1" required="required"  value="${modolLogin.q1}">
+							  <input type="text" name="q1" class="form-control inputstl" id="q1" placeholder="Informe a opção 1" required="required"  value="${modolEnquete.q1}">
 							  <label for="floatingInput">1ª Opção:</label>
 							</div>
 							</div>
@@ -105,7 +110,7 @@
 							<br>
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q2" class="form-control inputstl" id="q2" placeholder="Informe a opção 2" required="required"  value="${modolLogin.q2}">
+							  <input type="text" name="q2" class="form-control inputstl" id="q2" placeholder="Informe a opção 2" autocomplete="off" required="required"  value="${modolEnquete.q2}">
 							  <label for="floatingInput">2ª Opção:</label>
 							</div>
 							</div>
@@ -117,7 +122,7 @@
 							
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q3" class="form-control inputstl" id="q3" disabled="disabled" placeholder="Informe a opção 3" value=" " required="required"  value="${modolLogin.q3}">
+							  <input type="text" name="q3" class="form-control inputstl" id="q3" readOnly="readOnly" placeholder="Informe a opção 3" autocomplete="off" required="required"  value="${modolEnquete.q3}">
 							  <label for="floatingInput">3ª Opção:</label>
 							</div>
 							</div>
@@ -129,15 +134,19 @@
 								
 							<div class="form-group form-default">
 							<div class="form-floating">
-							  <input type="text" name="q4" class="form-control inputstl" id="q4" disabled="disabled" placeholder="Informe a opção 4" value=" " required="required" value="${modolLogin.q4}">
+							  <input type="text" name="q4" class="form-control inputstl" id="q4" readOnly="readOnly" placeholder="Informe a opção 4" autocomplete="off" required="required" value="${modolEnquete.q4}">
 							  <label for="floatingInput">4ª Opção:</label>
 							</div>
 							</div>					
 		
-							<input type="hidden" name="r1" value="0" value="${modolLogin.r1}">
-							<input type="hidden" name="r2" value="0" value="${modolLogin.r2}">
-							<input type="hidden" name="r3" value="0" value="${modolLogin.r3}">
-							<input type="hidden" name="r4" value="0" value="${modolLogin.r4}">
+							<input type="hidden" name="r1" value="0" value="${modolEnquete.r1}">
+							<input type="hidden" name="r2" value="0" value="${modolEnquete.r2}">
+							<input type="hidden" name="r3" value="0" value="${modolEnquete.r3}">
+							<input type="hidden" name="r4" value="0" value="${modolEnquete.r4}">
+							
+							
+							
+							
 
 					
 							
@@ -229,121 +238,32 @@
 		
 		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
 		setTimeout('time()',500);
-		}
+	}
 	
 	function limparForm(){
-		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/
+		var elementos = document.getElementById("formEnquete").elements; /*Retorna os elementos html dentro do form*/
 		
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
+		document.getElementById('msg').textContent = "Campos limpos";
 	}
 	 
 	
-	function criarDelete(){
 		
-		if(confirm('Deseja realmente excluir o Usuário?')){
-		
-		document.getElementById("formUser").method = 'get';
-		document.getElementById("acao").value = 'deletar';
-		document.getElementById("formUser").submit();
-		}
-	}
-	
-	function deleteComAjax(){
-		
-		if(document.getElementById("id").value == ""){
-			alert('Por favor, carregue um usuario para deletar');
-			document.getElementById("id").focus();
-			return false	
-		}else{
-				if(confirm("Deseja realmente excluir os dados?")){
-					
-					
-					var urlAction = document.getElementById('formUser').action;
-					var idUser = document.getElementById('id').value;
-					
-					$.ajax({
-						
-						method: "get",
-						url : urlAction,
-						data : "id=" + idUser + '&acao=deletarajax',
-						success: function (response){
-							
-							limparForm();
-							document.getElementById('msg').textContent = response;
-						}
-						
-					}).fail(function(xhr, status, errorThrown){
-						alert('Erro ao deletar usuário por id: '+ xhr.responseText);
-						
-					});
-					
-				}
-		}
-	}
-	
-	function buscarUsuario(){
-		var nomeBusca = document.getElementById('nomeBusca').value;
-		
-		if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != ''){/*Validando que tem que ter valor pra buscar no banco*/
-			
-			var urlAction = document.getElementById('formUser').action;
-			
-			$.ajax({
-				
-				method: "get",
-				url : urlAction,
-				data : "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
-				success: function (response){
-					
-				var json = JSON.parse(response);
-				
-				// console.info(json); /*informa internamente no navegador a lista (CONTROL+SHIFT+J) para mostrar*/
-					
-				$('#tabelaresultados > tbody > tr').remove();
-				
-				for(var p = 0; p < json.length; p++){
-					
-					$('#tabelaresultados > tbody').append('<tr> <td>'+json[p].id+'</td><td> '+json[p].nome+' </td> <td> <button onclick="verEditar('+json[p].id+')" type="button" class="btn btn-info">Ver</button> </td> </tr>');
-				}
-				
-				document.getElementById('totalResultados').textContent = 'Resultados: ' + json.length;
-				
-				}
-				
-			}).fail(function(xhr, status, errorThrown){
-				alert('Erro ao buscar usuário por nome: '+ xhr.responseText);
-				
-			});
-			
-		
-		}
-		
-	}
-	
-	function verEditar(id){
-		
-		var urlAction = document.getElementById('formUser').action;
-		
-		window.location.href = urlAction + '?acao=buscarEditar&id='+id;
-		  	
-		
-	}
-	
 	function habilitarq3(selecionado) {
 		
 		if(document.getElementById('flexSwitchCheckDefault3').checked != false || document.getElementById('flexSwitchCheckDefault3').checked != true && document.getElementById('flexSwitchCheckDefault4').checked != true){
 	    
 			if(document.getElementById('q3').checked != selecionado){
 				
-				document.getElementById('q3').disabled = false;
+				document.getElementById('q3').readOnly = false;
 				
 	
 			}
 			else{
 				document.getElementById('q3').checked = false;
-				document.getElementById('q3').disabled = true;
+				document.getElementById('q3').readOnly = true;
 				document.getElementById('q3').value = "";
 	
 			}
@@ -351,9 +271,9 @@
 		}else{
 			alert("Seleção não permitida, opção 3ª e 4ª serão desabilitadas");
 			document.getElementById('flexSwitchCheckDefault4').checked = false;
-			document.getElementById('q4').disabled = true;
+			document.getElementById('q4').readOnly = true;
 			document.getElementById('q4').value = "";
-			document.getElementById('q3').disabled = true;
+			document.getElementById('q3').readOnly = true;
 			document.getElementById('q3').value = "";
 		}
 	}
@@ -365,12 +285,12 @@
 	    
 			if(document.getElementById('q4').checked != selecionado){
 				
-				document.getElementById('q4').disabled = false;
+				document.getElementById('q4').readOnly = false;
 	
 			}
 			else{
 				document.getElementById('q4').checked = false;
-				document.getElementById('q4').disabled = true;
+				document.getElementById('q4').readOnly = true;
 				document.getElementById('q4').value = "";
 			}
 		
@@ -378,7 +298,7 @@
 			
 			alert("Seleção não permitida, habilite a 3ª opção para proceguir.");
 			document.getElementById('flexSwitchCheckDefault4').checked = false;
-			document.getElementById('q4').disabled = true;
+			document.getElementById('q4').readOnly = true;
 			document.getElementById('q4').value = "";
 		}
 	}

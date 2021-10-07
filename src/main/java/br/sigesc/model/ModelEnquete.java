@@ -16,7 +16,17 @@ public class ModelEnquete implements Serializable{
 	private int r2;
 	private int r3;
 	private int r4;
+	private Long id_usuario;
 	
+	public boolean isNovo() {
+		
+		if (this.id == null) {
+			return true; /*Inserir novo*/
+		}else if (this.id != null && this.id > 0) {
+			return false; /*Atualizar*/
+		}
+		return id == null;
+	}
 	
 	
 	public Long getId() {
@@ -78,6 +88,16 @@ public class ModelEnquete implements Serializable{
 	}
 	public void setR4(int r4) {
 		this.r4 = r4;
+	}
+
+
+	public Long getId_usuario() {
+		return id_usuario;
+	}
+
+
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 	
 	

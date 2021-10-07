@@ -43,6 +43,7 @@ public class ServletEnquete extends HttpServlet {
 		String r2 = request.getParameter("r2");
 		String r3 = request.getParameter("r3");
 		String r4 = request.getParameter("r4");
+		String id_usuario = request.getParameter("id_usuario");
 		
 		ModelEnquete modelEnquete = new ModelEnquete();
 		
@@ -56,13 +57,14 @@ public class ServletEnquete extends HttpServlet {
 		modelEnquete.setR2(Integer.parseInt(r2));
 		modelEnquete.setR3(Integer.parseInt(r3));
 		modelEnquete.setR4(Integer.parseInt(r4));
+		modelEnquete.setId_usuario(Long.parseLong(id_usuario));
 		
-		daoEnqueteRepository.gravarEnquete(modelEnquete);
+		modelEnquete = daoEnqueteRepository.gravarEnquete(modelEnquete);
 		
 		request.setAttribute("msg", "Operação realizada com sucesso!");
 		request.setAttribute("modolEnquete", modelEnquete);
 		request.getRequestDispatcher("principal/enquete.jsp").forward(request, response);
-		
+				
 		}catch (Exception e) {
 			e.printStackTrace();
 			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");

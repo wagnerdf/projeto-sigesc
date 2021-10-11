@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 
 
 
@@ -50,6 +50,7 @@ public class ServletLogin extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String url = request.getParameter("url");
+		String id_usuario = request.getParameter("idUser");
 		
 		
 		
@@ -60,21 +61,28 @@ public class ServletLogin extends HttpServlet {
 				
 				ModelLogin modelLogin = new ModelLogin();
 				modelLogin.setLogin(login);
-				modelLogin.setSenha(senha);	
+				modelLogin.setSenha(senha);
+				
+				
 						
 				
 				if (daoLoginRepository.validarAutenticacao(modelLogin)) { /*Simulando login*/
 					
 					request.getSession().setAttribute("usuario", modelLogin.getLogin());
-					request.getSession().setAttribute("id", modelLogin.getId());
-					
+															
 					if(url == null || url.equals("null")) {
 						url = "principal/principal.jsp";
-						HttpSession sessaoUsuario = request.getSession();
-				        sessaoUsuario.setAttribute("modolLogin", modelLogin);
-
-					}
-					
+						
+						ModelLogin modelId = new ModelLogin();
+						id_usuario = login;
+						modelId.setLogin(id_usuario);
+						
+						daoLoginRepository.pesquisarIdUsuario(modelId);
+						
+						request.getSession().setAttribute("idUser", modelId.getId());
+						
+					   
+			}
 					
 					
 					RequestDispatcher redirecionar = request.getRequestDispatcher(url);

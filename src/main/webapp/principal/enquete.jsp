@@ -139,11 +139,12 @@
 							</div>
 							</div>					
 		
-							<input type="hidden" name="r1" value="0" value="${modolEnquete.r1}">
-							<input type="hidden" name="r2" value="0" value="${modolEnquete.r2}">
-							<input type="hidden" name="r3" value="0" value="${modolEnquete.r3}">
-							<input type="hidden" name="r4" value="0" value="${modolEnquete.r4}">
+							<input type="hidden" name="r1" id="r1" value="0" value="${modolEnquete.r1}">
+							<input type="hidden" name="r2" id="r2" value="0" value="${modolEnquete.r2}">
+							<input type="hidden" name="r3" id="r3" value="0" value="${modolEnquete.r3}">
+							<input type="hidden" name="r4" id="r4" value="0" value="${modolEnquete.r4}">
 							
+							<input type="hidden" name="id_usuario" id="id_usuario" value="<%= session.getAttribute("idUser")%>" value="${modolEnquete.id_usuario}">
 							
 							
 							
@@ -246,6 +247,14 @@
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
+		
+		document.getElementById('r1').value = "0";
+		document.getElementById('r2').value = "0";
+		document.getElementById('r3').value = "0";
+		document.getElementById('r4').value = "0";
+		document.getElementById('id_usuario').value = "<%= session.getAttribute("idUser")%>";
+
+		
 		document.getElementById('msg').textContent = "Campos limpos";
 	}
 	 

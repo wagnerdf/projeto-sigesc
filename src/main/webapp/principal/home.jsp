@@ -12,7 +12,7 @@
 	<form>
 	
 	<div id="info-texto">
-	<h4>Seja bem-vindo: <%= session.getAttribute("usuario")%></h4>	
+	<h4>Seja bem-vindo: <%= session.getAttribute("id")%></h4>	
 	</div>
         
 	<br>

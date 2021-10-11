@@ -30,9 +30,33 @@ public class DAOLoginRepository {
 		if (resultSet.next()) {
 			
 			return true;/*Autenticado*/
+			
 		}
 		
 		return false;/*Não autenticado*/
+	}
+	
+	public ModelLogin pesquisarIdUsuario(ModelLogin modelId)throws Exception{
+		
+		String sql = "SELECT id FROM model_login where login = ?";
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		statement.setString(1, modelId.getLogin());
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		while (resultado.next()) { /*Se tem resultado*/
+			
+			modelId.setId(resultado.getLong("id"));
+			
+			
+		}
+		
+		return modelId;
+		
+		
+		
 	}
 	
 }

@@ -41,7 +41,7 @@
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
-	<body id="corpo" onload="time()">
+	<body id="corpo" onload="time();">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -61,7 +61,7 @@
 
 					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 
-					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser">
+					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
 					
 						<input type="hidden" name="acao" id="acao" value="">
 					
@@ -95,14 +95,15 @@
 							<div class="form-floating">
 							  <input type="text" name="login" class="form-control inputstl" id="login" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
 							  <label for="floatingInput">Login:</label>
+							  
 							</div>
 
 						</div>
 						<div>
 							
 						<div class="form-floating">
-							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="off"  value="${modolLogin.senha}">
-							<label for="floatingPassword">Password:</label>
+							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="new-password"  value="${modolLogin.senha}">
+							<label for="floatingPassword">Senha:</label>
 						</div>							
 							
 							
@@ -235,6 +236,7 @@
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
+		
 	}
 	 
 	
@@ -248,7 +250,7 @@
 		}
 	}
 	
-function deleteComAjax(){
+	function deleteComAjax(){
 		
 		if(document.getElementById("id").value == ""){
 			alert('Por favor, carregue um usuario para deletar');
@@ -329,7 +331,7 @@ function deleteComAjax(){
 		
 	}
 	
-	
+
 	
 
 </script>

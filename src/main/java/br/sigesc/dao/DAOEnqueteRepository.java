@@ -17,6 +17,8 @@ public class DAOEnqueteRepository {
 	
 	public ModelEnquete gravarEnquete(ModelEnquete objetoEnquete) throws Exception {
 		
+		if(objetoEnquete.isNovo()) {/*Gravar um novo*/
+		
 		String sql = "INSERT INTO enquete(pergunta, q1, q2, q3, q4, r1, r2, r3, r4, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
@@ -33,6 +35,22 @@ public class DAOEnqueteRepository {
 		
 		preparedSql.execute();
 		connection.commit();
+		
+		}else {
+			String sql = "UPDATE enquete SET pergunta=?, q1=?, q2=?, q3=?, q4=? WHERE id = "+objetoEnquete.getId()+";";
+			
+			PreparedStatement prepareSql = connection.prepareStatement(sql);
+			
+			prepareSql.setString(1, objetoEnquete.getPergunta());
+			prepareSql.setString(2, objetoEnquete.getQ1());
+			prepareSql.setString(3, objetoEnquete.getQ2());
+			prepareSql.setString(4, objetoEnquete.getQ3());
+			prepareSql.setString(5, objetoEnquete.getQ4());
+			
+			prepareSql.executeUpdate();
+			
+			connection.commit();
+		}
 	
 		return this.consultaEnquete(objetoEnquete.getPergunta());
 		

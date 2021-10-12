@@ -33,6 +33,8 @@ public class ServletEnquete extends HttpServlet {
 		
 		try {
 		
+		String msg = "Operação realizada com sucesso!";
+		
 		String id = request.getParameter("id");
 		String pergunta = request.getParameter("pergunta");
 		String q1 = request.getParameter("q1");
@@ -59,9 +61,15 @@ public class ServletEnquete extends HttpServlet {
 		modelEnquete.setR4(Integer.parseInt(r4));
 		modelEnquete.setId_usuario(Long.parseLong(id_usuario));
 		
+		if (modelEnquete.isNovo()) {
+			msg = "Gravado com sucesso!";
+		}else {
+			msg = "Atualizado com sucesso!";
+		}	
+		
 		modelEnquete = daoEnqueteRepository.gravarEnquete(modelEnquete);
 		
-		request.setAttribute("msg", "Operação realizada com sucesso!");
+		request.setAttribute("msg", msg);
 		request.setAttribute("modolEnquete", modelEnquete);
 		request.getRequestDispatcher("principal/enquete.jsp").forward(request, response);
 				

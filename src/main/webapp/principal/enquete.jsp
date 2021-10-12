@@ -169,7 +169,7 @@
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
 							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
-							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
+							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalEnquete">Pesquisar</button>
 
 						</div>
 							
@@ -193,6 +193,48 @@
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
 </body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalEnquete" tabindex="-1" aria-labelledby="exampleModalEnquete" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalEnquete">Pesquisa de Enquete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Texto" aria-label="Texto" id="nomeBusca" aria-describedby="button-addon2">
+						
+				<button class="btn btn-primary waves-effect waves-light" type="button" id="button-addon2" onclick="buscarEnquete();">Buscar</button>
+			</div>
+		<div style="height: 300px;overflow: scroll;">
+			<table class="table" id="tabelaresultados">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Texto</th>
+			      <th scope="col">Ver</th>
+			    </tr>
+			  </thead>
+			  
+			  <tbody>
+			  </tbody>
+			  
+			</table>
+			
+		</div>
+		<span id="totalResultados"></span>
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
@@ -312,6 +354,45 @@
 		}
 	}
 	
+	function buscarEnquete(){
+		var nomeBusca = document.getElementById('nomeBusca').value;
+		if(nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != ''){/*Validando que tem que ter valor pra buscar no banco*/
+		
+			var urlAction = document.getElementById('formEnquete').action;
+			
+			$.ajax({
+				
+				method: "get",
+				url : urlAction,
+				data : "nomeBusca=" + nomeBusca + '&acao=buscarEnqueteAjax',
+				success: function (response){
+					
+				var json = JSON.parse(response);
+				
+				$('#tabelaresultados > tbody > tr').remove;
+				
+				
+					for(var p = 0; p <json.length; p++){
+						$('#tabelaresultados > tbody').append('<tr><td>'+json[p].id+'</td><td>'+json[p].pergunta+'</td><td><button onclick="verEditarEnquete('+json[p].id+')" type="button" class="btn btn-info">Ver</button></td></tr>')
+						
+					}
+				  document.getElementById('totalResultados').textContent = 'Resultados: ' + json.length;
+				}
+				
+			}).fail(function(xhr, status, errorThrown){
+				alert('Erro ao buscar enquete por nome: '+ xhr.responseText);
+				
+			});
+			
+		}
+	}
+	
+	function verEditarEnquete(id){
+		
+		var urlAction = document.getElementById('formEnquete').action;
+		
+		window.location.href = urlAction + '?acao=buscarEditarEnquete&id='+id;
+	}
 
 </script>
 

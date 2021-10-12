@@ -1,6 +1,10 @@
 package br.sigesc.servlets;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.sigesc.dao.DAOEnqueteRepository;
 import br.sigesc.model.ModelEnquete;
@@ -25,6 +29,41 @@ public class ServletEnquete extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			
+			String acao = request.getParameter("acao");
+			
+			if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEnqueteAjax")) {
+				
+				String nomeBusca = request.getParameter("nomeBusca");
+				
+				
+				List<ModelEnquete> dadosJsonUser = daoEnqueteRepository.consultaEnqueteList(nomeBusca);
+				
+				ObjectMapper mapper = new ObjectMapper();
+				
+				String json = mapper.writeValueAsString(dadosJsonUser);
+								
+				response.getWriter().write(json);
+				
+		}
+			else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditarEnquete")) {
+				String id = request.getParameter("id");
+				ModelEnquete modelEnquete = daoEnqueteRepository.consultaEnqueteID(id); 
+				
+				request.setAttribute("msg", "Enquete em edição");
+				request.setAttribute("modolEnquete", modelEnquete);
+				request.getRequestDispatcher("principal/enquete.jsp").forward(request, response);
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");
+			request.setAttribute("msg", e.getMessage());
+			redirecionar.forward(request, response);
+		}
+		
 		
 	}
 

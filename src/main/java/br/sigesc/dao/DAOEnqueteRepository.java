@@ -3,6 +3,9 @@ package br.sigesc.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.sigesc.connection.SingleConnectionBanco;
 import br.sigesc.model.ModelEnquete;
@@ -53,9 +56,40 @@ public class DAOEnqueteRepository {
 		}
 	
 		return this.consultaEnquete(objetoEnquete.getPergunta());
-		
-		
+	
 	}
+		
+	public List<ModelEnquete> consultaEnqueteList(String pergunta) throws Exception{
+	
+		List<ModelEnquete> retorno = new ArrayList<ModelEnquete>();
+		
+		String sql = "SELECT * FROM enquete where upper(pergunta) like upper(?)";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, "%" + pergunta + "%");
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		while(resultado.next()) { /*Percorre as linhas de resultado do SQL*/
+			ModelEnquete modelEnquete = new ModelEnquete();
+			modelEnquete.setId(resultado.getLong("id"));
+			modelEnquete.setPergunta(resultado.getString("pergunta"));
+			modelEnquete.setQ1(resultado.getString("q1"));
+			modelEnquete.setQ2(resultado.getString("q2"));
+			modelEnquete.setQ3(resultado.getString("q3"));
+			modelEnquete.setQ4(resultado.getString("q4"));
+			
+			retorno.add(modelEnquete);
+			
+			
+		}
+		
+		
+		return retorno;
+	}
+		
+		
+		
+	
 	
 	public ModelEnquete consultaEnquete(String pergunta) throws Exception {
 		
@@ -65,6 +99,37 @@ public class DAOEnqueteRepository {
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 				
+		ResultSet resultado = statement.executeQuery();
+		
+		
+		while(resultado.next()) {
+			
+			modelEnquete.setId(resultado.getLong("id"));
+			modelEnquete.setPergunta(resultado.getString("pergunta"));
+			modelEnquete.setQ1(resultado.getString("q1"));
+			modelEnquete.setQ2(resultado.getString("q2"));
+			modelEnquete.setQ3(resultado.getString("q3"));
+			modelEnquete.setQ4(resultado.getString("q4"));
+			modelEnquete.setR1(resultado.getInt("r1"));
+			modelEnquete.setR2(resultado.getInt("r2"));
+			modelEnquete.setR3(resultado.getInt("r3"));
+			modelEnquete.setR4(resultado.getInt("r4"));
+			modelEnquete.setId_usuario(resultado.getLong("id_usuario"));
+			
+		}
+		
+		return modelEnquete;
+	}
+	
+	
+	public ModelEnquete consultaEnqueteID(String id) throws Exception {
+		
+		ModelEnquete modelEnquete = new ModelEnquete();
+		
+		String sql = "SELECT * FROM enquete WHERE id = ? ";
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setLong(1, Long.parseLong(id));
 		ResultSet resultado = statement.executeQuery();
 		
 		

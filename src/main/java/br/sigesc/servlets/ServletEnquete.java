@@ -1,6 +1,5 @@
 package br.sigesc.servlets;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -56,6 +55,15 @@ public class ServletEnquete extends HttpServlet {
 				request.getRequestDispatcher("principal/enquete.jsp").forward(request, response);
 				
 			}
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletarenqueteajax")) {
+				
+				String idUser = request.getParameter("id");
+				
+				daoEnqueteRepository.deletarEnquete(idUser);
+				
+				response.getWriter().write("Excluido com sucesso!");
+				
+		}
 			
 		}catch(Exception e) {
 			e.printStackTrace();

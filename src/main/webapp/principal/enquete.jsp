@@ -82,7 +82,7 @@
 								<br>
 								<div class="mb-3">
 								<label for="exampleFormControlTextarea1" class="form-label">Descreva uma questão para a enquete.</label>
-								<textarea name="pergunta" class="form-control" id="exampleFormControlTextarea1" rows="5" autofocus required="required">${modolEnquete.pergunta}</textarea>
+								<textarea name="pergunta" class="form-control" id="pergunta" rows="5" autofocus required="required">${modolEnquete.pergunta}</textarea>
 								</div>
 								<br>
 								<div class="msg">
@@ -168,7 +168,7 @@
 							
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
-							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
+							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteEnqueteComAjax();">Excluir</button>
 							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalEnquete">Pesquisar</button>
 
 						</div>
@@ -393,6 +393,40 @@
 		
 		window.location.href = urlAction + '?acao=buscarEditarEnquete&id='+id;
 	}
+	
+	function deleteEnqueteComAjax(){
+		if(document.getElementById("id").value == ""){
+			alert('Por favor, carregue uma enquete para deletar');
+			document.getElementById("pergunta").focus();
+			return false	
+		}else{
+			if(confirm("Deseja realmente excluir os dados?")){
+				
+				
+				var urlAction = document.getElementById('formEnquete').action;
+				var idUser = document.getElementById('id').value;
+				
+				$.ajax({
+				
+				method: "get",
+				url : urlAction,
+				data : "id=" + idUser + '&acao=deletarenqueteajax',
+				success: function (response){
+					
+					limparForm();
+					document.getElementById('msg').textContent = response;
+				}
+				
+				}).fail(function(xhr, status, errorThrown){
+					alert('Erro ao deletar usuário por id: '+ xhr.responseText);
+					
+				});
+				
+			}
+		}
+	}
+	
+	
 
 </script>
 

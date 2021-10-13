@@ -3,7 +3,6 @@ package br.sigesc.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,6 +149,15 @@ public class DAOEnqueteRepository {
 		}
 		
 		return modelEnquete;
+	}
+	
+	public void deletarEnquete(String idUser) throws Exception {
+		String sql = "DELETE FROM enquete WHERE id = ?;";		
+		PreparedStatement prepareSql = connection.prepareStatement(sql);
+		prepareSql.setLong(1, Long.parseLong(idUser));
+		prepareSql.executeUpdate();
+		
+		connection.commit();
 	}
 
 

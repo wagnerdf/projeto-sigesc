@@ -57,16 +57,18 @@
         
         
          <form method="post" action="ServletCarregadorImagem" enctype="multipart/form-data">
+         	<input type="hidden" name="id_usuario" value="<%= session.getAttribute("idUser")%>">
+         	<input type="hidden" value="<%=request.getParameter("login")%>" name="login">
        		<div>
        		<br/>
        		<img id="image-preview"  style="height:120px; width:108px;" onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/assets/imgs/user/wagner.jpg';">
      	    </div>
-     	    <!-- 		<input type="file" name="file">  -->
+     	    
      		<div>
      		<br/>
      	    <input style="display:none" id="input-image-hidden" name="file" onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])" type="file" accept="image/jpeg, image/png">
      		</div>
-     		<!-- <input type="submit" value="Upload"> -->
+     		
      		<div>	
      		<br/>
      		<button type="submit" class="btn btn-success" value="Upload" disabled="disabled" id="btalterarfoto">Alterar foto</button>
@@ -123,7 +125,7 @@ function HandleBrowseClick(input_image)
       btn.disabled = false;
   }
 
-  
+
 
 </script>
 

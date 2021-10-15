@@ -86,8 +86,12 @@
 							</TD>
 							</TR>
 					</TABLE>
+					
 				</div>
-
+				<div class="msg" align="center">
+					<br/>
+					<span id="msg">${msg}</span>
+				</div>
 
 			</div>
 			<!-- 4 -->	   

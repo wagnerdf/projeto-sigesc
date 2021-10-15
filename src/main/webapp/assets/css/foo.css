@@ -21,6 +21,15 @@
 
     }  
 
+input[type=file] {
+    float: left;
+    display: block;
+}
+.hide {
+    display: none;
+    float: left;
+}
+
 /* IMAGENS */
 #imgsigesc{
 	position: relative;

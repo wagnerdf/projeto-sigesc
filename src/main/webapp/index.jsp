@@ -31,6 +31,7 @@ form{
 	<form action="<%=request.getContextPath()%>/ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
 		<input type="hidden" value="<%=request.getParameter("url")%>" name="url">
 		<input type="hidden" value="<%=request.getParameter("id")%>" name="id">
+		<input type="hidden" value="<%=request.getParameter("nome_foto")%>" name="nomeFoto">
 		
 
 		<p align="center">

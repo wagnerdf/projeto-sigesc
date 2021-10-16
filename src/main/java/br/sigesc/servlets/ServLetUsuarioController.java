@@ -100,8 +100,9 @@ public class ServLetUsuarioController extends HttpServlet {
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
-		String login = request.getParameter("login");
+		String login = request.getParameter("loginUser");
 		String senha = request.getParameter("senha");
+		String nome_foto = "semfoto.jpg";
 		
 		ModelLogin modelLogin = new ModelLogin();
 		
@@ -110,6 +111,7 @@ public class ServLetUsuarioController extends HttpServlet {
 		modelLogin.setEmail(email);
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
+		modelLogin.setNome_foto(nome_foto);
 		
 		if (daoUsuarioRepository.validaLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
 			msg = "Já existe usuário com o mesmo login, informa outro login;";

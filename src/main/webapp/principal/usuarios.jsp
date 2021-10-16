@@ -93,7 +93,7 @@
 						<div class="form-group form-default">
 														
 							<div class="form-floating">
-							  <input type="text" name="login" class="form-control inputstl" id="login" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
+							  <input type="text" name="loginUser" class="form-control inputstl" id="loginUser" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
 							  <label for="floatingInput">Login:</label>
 							  
 							</div>

@@ -11,6 +11,7 @@ public class ModelLogin implements Serializable{
 	private String email;
 	private String login;
 	private String senha;
+	private String nome_foto;
 	
 	public boolean isNovo() {
 		
@@ -52,5 +53,15 @@ public class ModelLogin implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getNome_foto() {
+		return nome_foto;
+	}
+
+	public void setNome_foto(String nome_foto) {
+		this.nome_foto = nome_foto;
+	}
+	
+	
 
 }

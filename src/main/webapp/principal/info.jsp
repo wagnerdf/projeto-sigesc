@@ -10,7 +10,7 @@
 <form style="width: 138px; height: 136px">
 	<br>
 	<div id="info-imagen">
-  	<img src="<%= request.getContextPath() %>/assets/imgs/user/wagner.jpg" width="83" height="95" hspace="15" vspace="5" border="2" style="height: 120px; width: 108px" onclick="staticBackdrop" />
+  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>?nocache=<?jsp echo time(); ?>" width="83" height="95" hspace="15" vspace="5" border="2" style="height: 120px; width: 108px" onclick="staticBackdrop" />
 	</div>
 </form>
 <br>
@@ -58,7 +58,8 @@
         
          <form method="post" action="ServletCarregadorImagem" enctype="multipart/form-data">
          	<input type="hidden" name="id_usuario" value="<%= session.getAttribute("idUser")%>">
-         	<input type="hidden" value="<%=request.getParameter("login")%>" name="login">
+         	
+         	<input type="hidden" value="<%=session.getAttribute("usuario")%>" name="usuario">
        		<div>
        		<br/>
        		<img id="image-preview"  style="height:120px; width:108px;" onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/assets/imgs/user/wagner.jpg';">

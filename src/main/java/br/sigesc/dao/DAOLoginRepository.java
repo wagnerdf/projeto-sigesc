@@ -38,7 +38,7 @@ public class DAOLoginRepository {
 	
 	public ModelLogin pesquisarIdUsuario(ModelLogin modelId)throws Exception{
 		
-		String sql = "SELECT id FROM model_login where login = ?";
+		String sql = "SELECT id, nome_foto FROM model_login where login = ?";
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
@@ -49,6 +49,8 @@ public class DAOLoginRepository {
 		while (resultado.next()) { /*Se tem resultado*/
 			
 			modelId.setId(resultado.getLong("id"));
+			modelId.setNome_foto(resultado.getString("nome_foto"));
+			
 			
 			
 		}

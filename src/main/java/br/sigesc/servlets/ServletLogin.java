@@ -50,7 +50,9 @@ public class ServletLogin extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String url = request.getParameter("url");
-		String id_usuario = request.getParameter("idUser");
+		String id_usuario;// = request.getParameter("idUser");
+		//String nome_Foto = request.getParameter("nomeFoto");
+		
 		
 		
 		
@@ -68,6 +70,7 @@ public class ServletLogin extends HttpServlet {
 				
 				if (daoLoginRepository.validarAutenticacao(modelLogin)) { /*Simulando login*/
 					
+					//request.getSession().setAttribute("usuarioLogin", modelLogin.getLogin());
 					request.getSession().setAttribute("usuario", modelLogin.getLogin());
 															
 					if(url == null || url.equals("null")) {
@@ -77,9 +80,12 @@ public class ServletLogin extends HttpServlet {
 						id_usuario = login;
 						modelId.setLogin(id_usuario);
 						
+						
 						daoLoginRepository.pesquisarIdUsuario(modelId);
 						
+						request.getSession().setAttribute("nomeFoto", modelId.getNome_foto());
 						request.getSession().setAttribute("idUser", modelId.getId());
+						
 						
 					   
 			}

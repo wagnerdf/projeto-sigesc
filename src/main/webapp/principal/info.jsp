@@ -10,7 +10,7 @@
 <form style="width: 138px; height: 136px">
 	<br>
 	<div id="info-imagen">
-  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>?nocache=<?jsp echo time(); ?>" width="83" height="95" hspace="15" vspace="5" border="2" style="height: 120px; width: 108px" onclick="staticBackdrop" />
+  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>?nocache=<?jsp echo time(); ?>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" onclick="staticBackdrop" />
 	</div>
 </form>
 <br>
@@ -56,35 +56,27 @@
         
         
         
-         <form method="post" action="ServletCarregadorImagem" enctype="multipart/form-data">
+         <form method="post" action="ServletCarregadorImagem" enctype="multipart/form-data" id="main-contact-form">
          	<input type="hidden" name="id_usuario" value="<%= session.getAttribute("idUser")%>">
          	
          	<input type="hidden" value="<%=session.getAttribute("usuario")%>" name="usuario">
        		<div>
        		<br/>
-       		<img id="image-preview"  style="height:120px; width:108px;" onerror="this.onerror=null;this.src='<%= request.getContextPath() %>/assets/imgs/user/wagner.jpg';">
+       		<img id="image-preview"  style="height:120px; width:108px;" onError="this.onerror=null;this.src='/assets/imgs/alterarfoto.jpg';">
      	    </div>
      	    
      		<div>
      		<br/>
-     	    <input style="display:none" id="input-image-hidden" name="file" onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])" type="file" accept="image/jpeg, image/png">
+     	    <input style="display:none" id="input-image-hidden" name="file" onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])" type="file" required accept="image/jpeg, image/png">
      		</div>
      		
      		<div>	
      		<br/>
-     		<button type="submit" class="btn btn-success" value="Upload" disabled="disabled" id="btalterarfoto">Alterar foto</button>
+     		<button type="submit" class="btn btn-success" value="Upload" id="btalterarfoto" onclick="return alterarFoto()">Alterar foto</button>
      	 	</div>
      	 </form>	
-     		 
-     		 
-     		 
-        <!--    <h4>This is Ajax</h4>  -->                           
-     	<!--	<input id="ajaxfile" type="file"/><br/>  -->         
-     	<!--	<button onclick="uploadFile()">Upload</button>	 -->
 
-		
-		
-		<button  class="btn btn-warning" onclick="HandleBrowseClick('input-image-hidden'); disableButton();">Carregar imagem</button>
+		<button  class="btn btn-warning" onclick="HandleBrowseClick('input-image-hidden')" >Carregar imagem</button>
 		        
         <div>
         	
@@ -103,6 +95,7 @@
 </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 function HandleBrowseClick(input_image)
 {
@@ -125,9 +118,24 @@ function HandleBrowseClick(input_image)
       var btn = document.getElementById('btalterarfoto');
       btn.disabled = false;
   }
+  
+  function alterarFoto(){
+	  
+	  if(!$('input[name="file"]').val()){
+        alert("Escolha uma foto para anexar" );
+     }else if(confirm("Deseja realmente alterar sua foto?")){
+		return true;
+	 }
+		return false;
+  }
 
-
-
+  $(document).ready(function(){
+	    $("#btalterarfoto").on('change',function(){
+	    	var btn = document.getElementById('btalterarfoto');
+	        btn.disabled = false;
+	    });
+	});
+  
 </script>
 
 

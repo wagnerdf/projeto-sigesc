@@ -40,7 +40,7 @@ public class ServletCarregadorImagem extends HttpServlet {
 		
 		
 		// salvando na pasta do servidor
-		String msg = "Arquivo salvo com sucesso";
+		String msg = "Imagem salva com sucesso";
 		String path = request.getServletContext().getRealPath("/assets/imgs/user");
 		
 		

@@ -1,3 +1,35 @@
+h5{
+  	text-align: center;
+  	top: 80%;
+  	left: 48%;  
+  } 
+.msg{
+  	text-align: center;
+  	font-size: 15px;  
+  	   color: #ff0000;
+  	   background-color: #fff3cd;
+  	   border-color: #ffecb5;
+  	   
+  	   
+  } 
+  
+  body {
+	background-color: #F8CEBA;
+}
+
+.container{
+    max-width: 50%;  
+}
+
+#principal{
+  margin:0 auto;
+  border:#000000 1px solid;
+  width:790px;
+  height:1200px
+}
+  
+
+
 .inputstl { 
     padding: 9px; 
     border: solid 1px #0077B0; 

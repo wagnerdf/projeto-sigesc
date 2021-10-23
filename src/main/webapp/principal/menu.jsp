@@ -36,6 +36,7 @@
     </li>
     <li><a href="#">|&nbsp;Consulta&nbsp;|</a>
           <ul>
+          	<li><a href="">Comunicados</a></li>
            	<li><a href="">Comunicados</a></li>
             <li><a href="">Ata de Reunião</a></li>
             <li><a href="">Relatório Financeiro</a></li>
@@ -50,6 +51,7 @@
     <li><a href="#">|&nbsp;Comunicação&nbsp;|</a>
           <ul>
             <li><a href="<%= request.getContextPath() %>/principal/enquete.jsp">Enquete</a></li>
+            <li><a href="">Chat</a></li>
             <li><a href="">Sugestão</a></li>
             <li><a href="">Mensagem</a></li>
             <li><a href="">Reclamaçao</a></li>         

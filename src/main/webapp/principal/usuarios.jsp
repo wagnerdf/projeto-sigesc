@@ -9,15 +9,12 @@
     	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap.min.css"> 
 		
 	
-	    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
+	    <link rel="stylesheet" media="screen" title="padrao-theme" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/sigesc.css" type="text/css"/>
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
-		
-		
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
@@ -32,12 +29,7 @@
 		indicateSelected(formref.switchcontrol)
 		}
 		</script>
-	
-	
-	
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-		
+
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	

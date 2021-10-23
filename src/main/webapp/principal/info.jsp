@@ -10,7 +10,7 @@
 <form style="width: 138px; height: 136px">
 	<br>
 	<div id="info-imagen">
-  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>?nocache=<?jsp echo time(); ?>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" onclick="staticBackdrop" />
+  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" class="NO-CACHE"/>
 	</div>
 </form>
 <br>
@@ -31,7 +31,7 @@
  
   <select class="form-control form-control-sm" aria-label="Default select example" onchange="chooseStyle(this.value, 30)" >
   <optgroup label="Cores">
-  <option class="padraoText" selected value="none">Padrão</option>
+  <option class="padraoText" value="padrao-theme" selected value="none">Padrão</option>
   <option class="azulText" value="blue-theme">Azul</option>
   <option class="verdeText" value="brown-theme">Verde</option>
   </optgroup> 	
@@ -62,7 +62,7 @@
          	<input type="hidden" value="<%=session.getAttribute("usuario")%>" name="usuario">
        		<div>
        		<br/>
-       		<img id="image-preview"  style="height:120px; width:108px;" onError="this.onerror=null;this.src='/assets/imgs/alterarfoto.jpg';">
+       		<img id="image-preview"  style="height:120px; width:108px;" src="<%= request.getContextPath() %>/assets/imgs/alterarfoto.jpg">
      	    </div>
      	    
      		<div>
@@ -95,7 +95,7 @@
 </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 function HandleBrowseClick(input_image)
 {
@@ -123,6 +123,7 @@ function HandleBrowseClick(input_image)
 	  
 	  if(!$('input[name="file"]').val()){
         alert("Escolha uma foto para anexar" );
+        
      }else if(confirm("Deseja realmente alterar sua foto?")){
 		return true;
 	 }
@@ -135,6 +136,27 @@ function HandleBrowseClick(input_image)
 	        btn.disabled = false;
 	    });
 	});
+  
+	function time(){
+		today = new Date();
+		h = today.getHours();
+		m = today.getMinutes();
+		s = today.getSeconds();
+		
+		if(h<10){
+			h="0"+h;
+		}
+		if(m<10){
+			m="0"+m;
+		}
+		if(s<10){
+			s="0"+s;
+		}
+		
+		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
+		setTimeout('time()',500);
+		}
+  
   
 </script>
 

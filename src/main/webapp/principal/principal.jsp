@@ -3,19 +3,19 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+<head>
+		<meta charset="ISO-8859-1">
 	
 		<!-- Bootstrap CSS -->
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+    	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap.min.css"> 
 		
 	
-	    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
+	    <link rel="stylesheet" media="screen" title="padrao-theme" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
- 
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
@@ -30,14 +30,9 @@
 		indicateSelected(formref.switchcontrol)
 		}
 		</script>
-	
-	
-	
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-		
-	<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>	
-	</head>
+
+		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
+</head>
 	
 	<body id="corpo" onload="time()">
 		<div id="geral"> <!-- 0 -->
@@ -76,22 +71,54 @@
 												<h6>Como você usuário avalia o portal Sigesc adquirido
 													para automatizar as operações realizadas diariamente no
 													condomínio?</h6>
-												<br> <input type="radio">Excelente<br> <input
-													type="radio">Muito Bom<br> <input type="radio">Bom<br>
-												<input type="radio">Ruim<br> <br> <input
-													type="submit" name="Votar" value="Votar"> <input
-													type="button" name="Resultado" value="Resultado">
+												<br> 
+												
+												  	<div class="form-check">
+													  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+													  <label class="form-check-label" for="flexRadioDefault1">Excelente</label>
+													</div>
+													<div class="form-check">
+													  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+													  <label class="form-check-label" for="flexRadioDefault2">Muito bom</label>
+													</div>
+													<div class="form-check">
+													  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+													  <label class="form-check-label" for="flexRadioDefault3">Bom</label>
+													</div>
+													<div class="form-check">
+													  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+													  <label class="form-check-label" for="flexRadioDefault4">Ruim</label>
+													</div>
+												
+												<br>
+												<br> 
+												<button type="button" class="btn btn-primary" name="Votar" value="Votar">Votar</button>
+												<button type="button" class="btn btn-warning" name="Resultado" value="Resultado">Resultado</button>
 											</div>
 									</div>
 							</TD>
 							</TR>
 					</TABLE>
 					
+					<table>
+						<tr>
+						<td>
+						<div>
+							<br/>
+							<br/>
+							<br/>
+							<div class="msg" align="center">
+								
+								<span id="msg">${msg}</span>
+							</div>
+						</div>	
+						</td>
+						</tr>
+					</table>
+					
+					
 				</div>
-				<div class="msg" align="center">
-					<br/>
-					<span id="msg">${msg}</span>
-				</div>
+					
 
 			</div>
 			<!-- 4 -->	   
@@ -107,10 +134,8 @@
 </body>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"	crossorigin="anonymous"></script>
-
+	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 
 <script type="text/javascript">
 
@@ -133,25 +158,7 @@
 	  });
 	})();
 
-	function time(){
-		today = new Date();
-		h = today.getHours();
-		m = today.getMinutes();
-		s = today.getSeconds();
-		
-		if(h<10){
-			h="0"+h;
-		}
-		if(m<10){
-			m="0"+m;
-		}
-		if(s<10){
-			s="0"+s;
-		}
-		
-		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
-		setTimeout('time()',500);
-		}
+
 	
 </script>
 

@@ -1,4 +1,4 @@
-package br.sigesc.email;
+package br.sigesc.services;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,7 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class ObjetoEnviarEmail {
 	
 	private String userName = "sigesc.portal@gmail.com";
-	private String senha = "**********";
+	private String senha = "************";
 	
 	private String listaDestinatario = "";
 	private String nomeRemetente = "";

@@ -114,11 +114,6 @@ function HandleBrowseClick(input_image)
   } 
 
 
-  function disableButton() {
-      var btn = document.getElementById('btalterarfoto');
-      btn.disabled = false;
-  }
-  
   function alterarFoto(){
 	  
 	  if(!$('input[name="file"]').val()){

@@ -158,6 +158,19 @@
 	  });
 	})();
 
+	/*
+	 * Função para limpar mensagens do sistema apos 5 segundos
+	 */
+	window.onload = function() {
+	    setTimeout(function(){
+	       var e = "msg"; 
+
+	        var o = document.getElementsByClassName(e);                 
+
+	        o[0].style.display = 'none';
+	        
+	    }, 5000); 
+	};	
 
 	
 </script>

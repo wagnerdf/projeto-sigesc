@@ -70,6 +70,7 @@ public class ServletCarregadorImagem extends HttpServlet {
 		
 		request.setAttribute("msg", msg);
 		request.getSession().setAttribute("nomeFoto", nome_foto);
+		
 		request.getRequestDispatcher("/principal/principal.jsp").forward(request, response);
 		
 		

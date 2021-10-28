@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import br.sigesc.email.ObjetoEnviarEmail;
+import br.sigesc.services.ObjetoEnviarEmail;
 
 
 
@@ -35,7 +35,7 @@ public class AppTest {
 		stringBuilderTextoEmail.append("<span style=\"font-size:12px\">Ass.: Wagner A. Andrade - Admin</span>");
 		
 		ObjetoEnviarEmail enviarEmail = 
-				new ObjetoEnviarEmail("wagner.lorddf@gmail.com", 
+				new ObjetoEnviarEmail("wagner.lorddf@gmail.com, wagnerandrade_df@hotmail.com", 
 										"SIGESC - Portal", 
 										"Testando e-mail com Java", 
 										stringBuilderTextoEmail.toString());

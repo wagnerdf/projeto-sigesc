@@ -51,9 +51,9 @@
     <li><a href="#">|&nbsp;Comunicação&nbsp;|</a>
           <ul>
             <li><a href="<%= request.getContextPath() %>/principal/enquete.jsp">Enquete</a></li>
+            <li><a href="<%= request.getContextPath() %>/principal/emailUsuarios.jsp">Mensagem</a></li>
             <li><a href="">Chat</a></li>
             <li><a href="">Sugestão</a></li>
-            <li><a href="">Mensagem</a></li>
             <li><a href="">Reclamaçao</a></li>         
            </ul>
     </li>

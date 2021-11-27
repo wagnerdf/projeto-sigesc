@@ -26,7 +26,7 @@ public class ServletEnviarEmail extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String userName = "sigesc.portal@gmail.com";
-		String senha = "**********";
+		String senha = "159357Sigesc";
 		
 		String listaDestinatario = req.getParameter("inputEmail");
 		String nomeRemetente = req.getParameter("nome");

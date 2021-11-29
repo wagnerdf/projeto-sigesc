@@ -17,7 +17,7 @@
       	<ul>
            		
            		 <li><a href="">Cadastrar Funcionário</a></li>                 
-                 <li><a href="<%= request.getContextPath() %>/principal/usuarios.jsp">Cadastrar Usuários</a></li>
+                 <li><a href="<%= request.getContextPath() %>/ServLetUsuarioController?acao=listarUser">Cadastrar Usuários</a></li>
                  <li><a href="">Cadastrar Login</a></li>
                  <li><a href="">Pesquisar Funcionário</a></li>
                  <li><a href="">Pesquisar Usuários</a></li>

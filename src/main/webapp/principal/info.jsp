@@ -76,7 +76,7 @@
      	 	</div>
      	 </form>	
 
-		<button  class="btn btn-warning" onclick="HandleBrowseClick('input-image-hidden')" >Carregar imagem</button>
+		<button  class="btn btn-warning" onclick="HandleBrowseClick('input-image-hidden')" >Escolher imagem</button>
 		        
         <div>
         	
@@ -110,14 +110,14 @@ function HandleBrowseClick(input_image)
 		method: "POST",
 		body: formData
 	});
-	alert("The file upload with and java was a sucesso");
+	alert("O upload do arquivo foi um sucesso");
   } 
 
 
   function alterarFoto(){
 	  
 	  if(!$('input[name="file"]').val()){
-        alert("Escolha uma foto para anexar" );
+        alert("Escolha uma imagem para anexar" );
         
      }else if(confirm("Deseja realmente alterar sua foto?")){
 		return true;
@@ -129,9 +129,11 @@ function HandleBrowseClick(input_image)
 	    $("#btalterarfoto").on('change',function(){
 	    	var btn = document.getElementById('btalterarfoto');
 	        btn.disabled = false;
+
 	    });
 	});
   
+
 	function time(){
 		today = new Date();
 		h = today.getHours();

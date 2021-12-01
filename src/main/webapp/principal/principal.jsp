@@ -35,7 +35,7 @@
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
-	<body id="corpo" onload="time()">
+	<body id="corpo" onload="time(), refresh()">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -173,6 +173,9 @@
 	    }, 5000); 
 	};	
 
+	function refresh() {    
+		window.location.reload(true);//Forçar o carregamento da pagina ao alterar a foto.
+	}
 	
 </script>
 

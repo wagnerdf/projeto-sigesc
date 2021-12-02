@@ -3,6 +3,7 @@ package br.sigesc.servlets;
 import java.io.IOException;
 
 import br.sigesc.dao.DAOLoginRepository;
+import br.sigesc.dao.DAOUsuarioRepository;
 import br.sigesc.model.ModelLogin;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,6 +21,7 @@ public class ServletLogin extends HttpServlet {
 	
 	
 	private DAOLoginRepository daoLoginRepository = new DAOLoginRepository();
+	private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository();
 
     
     public ServletLogin() {
@@ -53,25 +55,21 @@ public class ServletLogin extends HttpServlet {
 		String id_usuario;// = request.getParameter("idUser");
 		//String nome_Foto = request.getParameter("nomeFoto");
 		
-		
-		
-		
-		
+			
 		try {
 		
 			if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 				
 				ModelLogin modelLogin = new ModelLogin();
 				modelLogin.setLogin(login);
-				modelLogin.setSenha(senha);
-				
-				
-						
+				modelLogin.setSenha(senha);	
 				
 				if (daoLoginRepository.validarAutenticacao(modelLogin)) { /*Simulando login*/
 					
-					//request.getSession().setAttribute("usuarioLogin", modelLogin.getLogin());
+					modelLogin = daoUsuarioRepository.consultarUsuarioLogado(login);
+					
 					request.getSession().setAttribute("usuario", modelLogin.getLogin());
+					request.getSession().setAttribute("isAdmin", modelLogin.getUseradmin());
 															
 					if(url == null || url.equals("null")) {
 						url = "principal/principal.jsp";

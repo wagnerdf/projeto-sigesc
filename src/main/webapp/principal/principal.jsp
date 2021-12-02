@@ -174,7 +174,8 @@
 	};	
 
 	function refresh() {    
-		window.location.reload(true);//Forçar o carregamento da pagina ao alterar a foto.
+		window.location.reload(true)//Forçar o carregamento da pagina ao alterar a foto.
+		
 	}
 	
 </script>

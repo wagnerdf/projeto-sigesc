@@ -1,5 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set scope="session" var="isAdmin" value='<%= request.getSession().getAttribute("isAdmin").toString() %>'></c:set>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,8 +18,10 @@
     <li><a href="#">|&nbsp;Usuários&nbsp;|</a>
       	<ul>
            		
-           		 <li><a href="">Cadastrar Funcionário</a></li>                 
-                 <li><a href="<%= request.getContextPath() %>/ServLetUsuarioController?acao=listarUser">Cadastrar Usuários</a></li>
+           		 <li><a href="">Cadastrar Funcionário</a></li>
+           		 <c:if test="${isAdmin}">                 
+                 	<li><a href="<%= request.getContextPath() %>/ServLetUsuarioController?acao=listarUser">Cadastrar Usuários</a></li>
+                 </c:if>
                  <li><a href="">Cadastrar Login</a></li>
                  <li><a href="">Pesquisar Funcionário</a></li>
                  <li><a href="">Pesquisar Usuários</a></li>

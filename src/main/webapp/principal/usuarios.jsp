@@ -1,3 +1,4 @@
+<%@page import="br.sigesc.model.ModelLogin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -75,12 +76,47 @@
 						</div>
 						
 						<div class="form-floating">
-							<select class="form-control inputstl" required="required" name="perfil" id="perfil">
+							<select class="form-control inputstl" required="required" name="perfil">
 								<option disabled="disabled">[Selecione o Perfil]</option>
-								<option value="ADMIN">Admin</option>
-								<option value="SINDICO">Síndico</option>
-								<option value="CONDOMINO">Condômino</option>
-								<option value="INQUILINO">Inquilino</option>
+								
+								<option value="ADMIN" <%
+								
+								ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+								if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")){
+									out.print(" ");
+										out.print("selected=\"selected\"");
+									out.print(" ");
+								} %> >Admin</option>
+								
+								<option value="SINDICO" <% 
+								
+								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+								if (modelLogin != null && modelLogin.getPerfil().equals("SINDICO")){
+									out.print(" ");
+										out.print("selected=\"selected\"");
+									out.print(" ");
+								} %>>Síndico</option>
+								
+								<option value="CONDOMINO" <%
+								
+								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+								if (modelLogin != null && modelLogin.getPerfil().equals("CONDOMINO")){
+									out.print(" ");
+										out.print("selected=\"selected\"");
+									out.print(" ");
+								} %>>Condômino</option>
+								<option value="INQUILINO" <% 
+								
+								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+								if (modelLogin != null && modelLogin.getPerfil().equals("INQUILINO")){
+									out.print(" ");
+										out.print("selected=\"selected\"");
+									out.print(" ");
+								} %>>Inquilino</option>
 							</select>
 							<span class="form-bar"></span>
 								<label class="float-label">Perfil:</label>

@@ -13,8 +13,15 @@ public class ModelLogin implements Serializable{
 	private String senha;
 	private String nome_foto;
 	private boolean useradmin;
+	private String perfil;
 	
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 	
+	public String getPerfil() {
+		return perfil;
+	}
 	
 	public boolean getUseradmin() {
 		return useradmin;

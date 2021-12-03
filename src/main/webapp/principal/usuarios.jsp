@@ -61,29 +61,39 @@
 					
 						<div class="form-group form-control-sm">
 																
-								<div class="form-floating">
+								<div class="form-group">
 								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
-								 <label for="floatingInput">ID:</label>
+								 
 								</div>
-
 						</div>
+						
 						<div class="form-group form-default">
-
 						<div class="form-floating">
 						  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
 						  <label for="floatingInput">Nome:</label>
 						</div>
-
 						</div>
-						<div class="form-group form-default">
-													
+						
+						<div class="form-floating">
+							<select class="form-control inputstl" required="required" name="perfil" id="perfil">
+								<option disabled="disabled">[Selecione o Perfil]</option>
+								<option value="ADMIN">Admin</option>
+								<option value="SINDICO">Síndico</option>
+								<option value="CONDOMINO">Condômino</option>
+								<option value="INQUILINO">Inquilino</option>
+							</select>
+							<span class="form-bar"></span>
+								<label class="float-label">Perfil:</label>
+						</div>
+						
+						
+						<div class="form-group form-default">				
 							<div class="form-floating">
 							<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
 							<label for="floatingInput">Email</label>
 							</div>
-							
-
 						</div>
+						
 						<div class="form-group form-default">
 														
 							<div class="form-floating">
@@ -102,8 +112,8 @@
 							
 							
 						</div>
-						<h6>&nbsp;</h6>	
-						<div align="center" >
+							
+						<div align="center" class="linhahorizontal">
 							
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
@@ -111,7 +121,7 @@
 							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
 
 						</div>
-							<h6>&nbsp;</h6>	
+								
 										
 					</form>
 						<div class="msg">

@@ -75,13 +75,40 @@
 						</div>
 						</div>
 						
+						<div>
+						
+							<input type="radio" name="sexo" checked="checked" value="MASCULINO"<%
+							
+									ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+									if (modelLogin != null && modelLogin.getSexo().equals("MASCULINO")){
+										out.print(" ");
+											out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+									
+							%>>Masculino</>
+							<input type="radio" name="sexo" value="FEMININO"<% 
+								
+									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								
+									if (modelLogin != null && modelLogin.getSexo().equals("FEMININO")){
+										out.print(" ");
+											out.print("checked=\"checked\"");
+										out.print(" ");
+									}
+									
+							%>>Feminino</>
+						
+						</div>
+						
 						<div class="form-floating">
 							<select class="form-control inputstl" required="required" name="perfil">
 								<option disabled="disabled">[Selecione o Perfil]</option>
 								
 								<option value="ADMIN" <%
 								
-								ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
 								
 								if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")){
 									out.print(" ");

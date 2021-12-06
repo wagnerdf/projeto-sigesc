@@ -36,7 +36,7 @@
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
-	<body id="corpo" onload="time();">
+	<body id="corpo" onload="time()">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -56,135 +56,159 @@
 
 					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 
-					<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
+					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
 					
-						<input type="hidden" name="acao" id="acao" value="">
-					
-						<div class="form-group form-control-sm">
-																
-								<div class="form-group">
-								 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
-								 
+							<input type="hidden" name="acao" id="acao" value="">
+						
+					<table class="w-100 p-3">
+					<tr>	
+						<td>	
+							<div class="form-group form-control-sm linhahorizontal">
+																	
+									<div class="form-floating">
+									 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
+									  <label for="floatingInput">ID:</label>
+									</div>
+							</div>
+							
+							<div class="form-group form-default linhahorizontal">
+							<div class="form-floating">
+							  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
+							  <label for="floatingInput">Nome:</label>
+							</div>
+							</div>
+							
+							<div>
+								<div align="center">
+									<label for="floatingInput linhahorizontal"><b>Informe o sexo: </b></label>
+									
+									<input type="radio" name="sexo" checked="checked" value="MASCULINO"<%
+								
+										ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+									
+										if (modelLogin != null && modelLogin.getSexo().equals("MASCULINO")){
+											out.print(" ");
+												out.print("checked=\"checked\"");
+											out.print(" ");
+										}
+										
+								%>>Masculino</>
+								<input type="radio" name="sexo" value="FEMININO"<% 
+									
+										modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+									
+										if (modelLogin != null && modelLogin.getSexo().equals("FEMININO")){
+											out.print(" ");
+												out.print("checked=\"checked\"");
+											out.print(" ");
+										}
+										
+								%>>Feminino</>
+									
 								</div>
-						</div>
-						
-						<div class="form-group form-default">
-						<div class="form-floating">
-						  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
-						  <label for="floatingInput">Nome:</label>
-						</div>
-						</div>
-						
-						<div>
-						
-							<input type="radio" name="sexo" checked="checked" value="MASCULINO"<%
+								
 							
-									ModelLogin modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-									if (modelLogin != null && modelLogin.getSexo().equals("MASCULINO")){
-										out.print(" ");
-											out.print("checked=\"checked\"");
-										out.print(" ");
-									}
+							</div>
+							<div class="linhahorizontal">
+							<div class="form-floating">
+								<select class="form-control inputstl" required="required" name="perfil">
+									<option disabled="disabled">[Selecione o Perfil]</option>
 									
-							%>>Masculino</>
-							<input type="radio" name="sexo" value="FEMININO"<% 
-								
+									<option value="ADMIN" <%
+									
 									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-									if (modelLogin != null && modelLogin.getSexo().equals("FEMININO")){
-										out.print(" ");
-											out.print("checked=\"checked\"");
-										out.print(" ");
-									}
 									
-							%>>Feminino</>
-						
-						</div>
-						
-						<div class="form-floating">
-							<select class="form-control inputstl" required="required" name="perfil">
-								<option disabled="disabled">[Selecione o Perfil]</option>
-								
-								<option value="ADMIN" <%
-								
-								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-								if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")){
-									out.print(" ");
-										out.print("selected=\"selected\"");
-									out.print(" ");
-								} %> >Admin</option>
-								
-								<option value="SINDICO" <% 
-								
-								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-								if (modelLogin != null && modelLogin.getPerfil().equals("SINDICO")){
-									out.print(" ");
-										out.print("selected=\"selected\"");
-									out.print(" ");
-								} %>>Síndico</option>
-								
-								<option value="CONDOMINO" <%
-								
-								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-								if (modelLogin != null && modelLogin.getPerfil().equals("CONDOMINO")){
-									out.print(" ");
-										out.print("selected=\"selected\"");
-									out.print(" ");
-								} %>>Condômino</option>
-								<option value="INQUILINO" <% 
-								
-								modelLogin = (ModelLogin) request.getAttribute("modolLogin");
-								
-								if (modelLogin != null && modelLogin.getPerfil().equals("INQUILINO")){
-									out.print(" ");
-										out.print("selected=\"selected\"");
-									out.print(" ");
-								} %>>Inquilino</option>
-							</select>
-							<span class="form-bar"></span>
-								<label class="float-label">Perfil:</label>
-						</div>
-						
-						
-						<div class="form-group form-default">				
-							<div class="form-floating">
-							<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
-							<label for="floatingInput">Email</label>
+									if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")){
+										out.print(" ");
+											out.print("selected=\"selected\"");
+										out.print(" ");
+									} %> >Admin</option>
+									
+									<option value="SINDICO" <% 
+									
+									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+									
+									if (modelLogin != null && modelLogin.getPerfil().equals("SINDICO")){
+										out.print(" ");
+											out.print("selected=\"selected\"");
+										out.print(" ");
+									} %>>Síndico</option>
+									
+									<option value="CONDOMINO" <%
+									
+									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+									
+									if (modelLogin != null && modelLogin.getPerfil().equals("CONDOMINO")){
+										out.print(" ");
+											out.print("selected=\"selected\"");
+										out.print(" ");
+									} %>>Condômino</option>
+									<option value="INQUILINO" <% 
+									
+									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
+									
+									if (modelLogin != null && modelLogin.getPerfil().equals("INQUILINO")){
+										out.print(" ");
+											out.print("selected=\"selected\"");
+										out.print(" ");
+									} %>>Inquilino</option>
+								</select>
+								<span class="form-bar"></span>
+									<label class="float-label">Perfil:</label>
 							</div>
-						</div>
-						
-						<div class="form-group form-default">
-														
-							<div class="form-floating">
-							  <input type="text" name="loginUser" class="form-control inputstl" id="loginUser" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
-							  <label for="floatingInput">Login:</label>
-							  
 							</div>
-
-						</div>
-						<div>
 							
-						<div class="form-floating">
-							<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="new-password"  value="${modolLogin.senha}">
-							<label for="floatingPassword">Senha:</label>
-						</div>							
+								<div class="form-group form-default linhahorizontal">				
+								<div class="form-floating">
+								<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
+								<label for="floatingInput">Email</label>
+								</div>
+							</div>
 							
+						</td>	
+						
+						<td>	
 							
-						</div>
+							<div class="form-group form-default linhahorizontal">					
+							     <div class="form-floating">
+							     <input type="text" name="loginUser" class="form-control inputstl" id="loginUser" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
+								 <label for="floatingInput">Login:</label>
+								 </div>
+							</div>
 							
-						<div align="center" class="linhahorizontal">
+							<div class="form-group form-default linhahorizontal">
+								<div class="form-floating">
+								<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="new-password"  value="${modolLogin.senha}">
+								<label for="floatingPassword">Senha:</label>
+								</div>								
+							</div>
 							
-							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
-							<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
-							<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
-							<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
-
-						</div>
+							<div class="form-group form-defalt input-group mb-4">
+								<div class="input-group-prepend">
+									<c:if test="${modolLogin.fotouser != '' && modolLogin.fotouser != null }">
+										<img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="100px">
+									</c:if>
+									<c:if test="${modolLogin.fotouser == '' || modolLogin.fotouser == null }">
+										<img alt="Imagem User" id="fotoembase64" src="assets/imgs/user/user.jpg" width="100px">
+									</c:if>
+									
+								</div>
+								<input type="file" id="fileFoto" name="fileFoto" accept="image/*" onchange="visualizarImg('fotoembase64', 'fileFoto')" class="form-control-file" style="margin-top: 15px; margin-left: 5px">
+							
+							</div>
+							
+						</td>
+					</tr>		
+					</table>			
+							<div align="center" class="linhahorizontal">
 								
+								<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
+								<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
+								<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
+								<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
+	
+							</div>
+				
 										
 					</form>
 						<div class="msg">
@@ -317,7 +341,7 @@
 		
 		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
 		setTimeout('time()',500);
-		}
+	}
 	
 	function limparForm(){
 		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/
@@ -433,6 +457,25 @@
 	        
 	    }, 5000); 
 	};	
+	
+	function visualizarImg(fotoembase64, filefoto){
+		
+		var preview = document.getElementById(fotoembase64);//campo IMG html
+		var fileUser = document.getElementById(filefoto).files[0];
+		var reader = new FileReader();
+		
+		reader.onloadend = function(){
+			preview.src = reader.result; /*Carrega a foto na tela*/
+		};
+		
+		if(fileUser){
+			reader.readAsDataURL(fileUser); /*Preview da imagem*/
+		}else{
+			preview.src= '';
+		}
+		
+	}
+	
 	
 </script>
 

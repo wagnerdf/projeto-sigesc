@@ -16,9 +16,9 @@
 <br>
 <div id="info-texto">
 	<span class="info-texto-destaque">Usuário: </span><%= session.getAttribute("usuario")%><br/>
-	
 	<span class="info-texto-destaque">Data: </span><%=mostra_data%><br/>
-	<div id="txt"></div>	
+	<p id="horaAtual"/>
+	<div id="horaAtual"></div>	
 </div>
 
 <div>
@@ -150,7 +150,7 @@ function HandleBrowseClick(input_image)
 			s="0"+s;
 		}
 		
-		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
+		document.getElementById('horaAtual').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
 		setTimeout('time()',500);
 		}
   

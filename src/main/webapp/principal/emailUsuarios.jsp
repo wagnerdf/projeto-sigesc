@@ -43,7 +43,7 @@
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
-	<body id="corpo" onload="time()">
+	<body id="corpo">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -176,6 +176,27 @@
 	    }, 5000); // O tempo em milisegundos. 1 segundo = 1000 milisegundos.
 	};	
 	
+	function time(){
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		
+		if(h<10){
+			h="0"+h;
+		}
+		if(m<10){
+			m="0"+m;
+		}
+		if(s<10){
+			s="0"+s;
+		}
+		
+		var tempo_total = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
+		var tempo = window.document.getElementById('txt');
+		tempo.innerHTML = tempo_total;
+	}
+	setInterval(time,500)
 </script>
 
 </html>

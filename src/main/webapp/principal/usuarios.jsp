@@ -36,7 +36,7 @@
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
-	<body id="corpo" onload="time()">
+	<body id="corpo">
 		<div id="geral"> <!-- 0 -->
 			<br>
     	  	<div id="topo"><%@ include file="/principal/topo.jsp" %></div> <!-- 1 -->
@@ -326,10 +326,10 @@
 	})();
 
 	function time(){
-		today = new Date();
-		h = today.getHours();
-		m = today.getMinutes();
-		s = today.getSeconds();
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
 		
 		if(h<10){
 			h="0"+h;
@@ -341,9 +341,11 @@
 			s="0"+s;
 		}
 		
-		document.getElementById('txt').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
-		setTimeout('time()',500);
+		var tempo_total = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
+		var tempo = window.document.getElementById('txt');
+		tempo.innerHTML = tempo_total;
 	}
+	setInterval(time,500)
 	
 	function limparForm(){
 		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/

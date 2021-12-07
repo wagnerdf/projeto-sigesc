@@ -17,10 +17,9 @@
 <div id="info-texto">
 	<span class="info-texto-destaque">Usuário: </span><%= session.getAttribute("usuario")%><br/>
 	<span class="info-texto-destaque">Data: </span><%=mostra_data%><br/>
-	<p id="horaAtual"/>
-	<div id="horaAtual"></div>	
+	<span id="txt"></span>
 </div>
-
+	
 <div>
 <br>
 <div id="info-texto">
@@ -132,28 +131,6 @@ function HandleBrowseClick(input_image)
 
 	    });
 	});
-  
-
-	function time(){
-		today = new Date();
-		h = today.getHours();
-		m = today.getMinutes();
-		s = today.getSeconds();
-		
-		if(h<10){
-			h="0"+h;
-		}
-		if(m<10){
-			m="0"+m;
-		}
-		if(s<10){
-			s="0"+s;
-		}
-		
-		document.getElementById('horaAtual').innerHTML = "<b>Hora: </b>"+ h + ":" + m + ":" + s;
-		setTimeout('time()',500);
-		}
-  
   
 </script>
 

@@ -60,18 +60,17 @@
 					
 							<input type="hidden" name="acao" id="acao" value="">
 						
-					<table class="w-100 p-3">
+					<table class="w-100 p-4">
 					<tr>	
-						<td>	
-							<div class="form-group form-control-sm linhahorizontal">
-																	
-									<div class="form-floating">
+						<td width="33%">	
+							<div class="form-group form-control-sm linhahorizontal ">									
+									<div class="form-floating"> 
 									 <input type="text" name="id" id="id" class="form-control form-control-sm"  readonly="readonly" value="${modolLogin.id}">
 									  <label for="floatingInput">ID:</label>
 									</div>
 							</div>
 							
-							<div class="form-group form-default linhahorizontal">
+							<div class="form-group form-default linhahorizontal form-control-md">
 							<div class="form-floating">
 							  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
 							  <label for="floatingInput">Nome:</label>
@@ -80,7 +79,7 @@
 							
 							<div>
 								<div align="center">
-									<label for="floatingInput linhahorizontal"><b>Informe o sexo: </b></label>
+									<label for="floatingInput linhahorizontal"><b>Sexo: </b></label>
 									
 									<input type="radio" name="sexo" checked="checked" value="MASCULINO"<%
 								
@@ -161,13 +160,13 @@
 								<div class="form-group form-default linhahorizontal">				
 								<div class="form-floating">
 								<input type="email" name="email" id="email" class="form-control inputstl" required="required" placeholder="seu@email.com" autocomplete="off"  value="${modolLogin.email}">
-								<label for="floatingInput">Email</label>
+								<label for="floatingInput">Email:</label>
 								</div>
 							</div>
 							
 						</td>	
 						
-						<td>	
+						<td width="33%">	
 							
 							<div class="form-group form-default linhahorizontal">					
 							     <div class="form-floating">
@@ -183,31 +182,86 @@
 								</div>								
 							</div>
 							
-							<div class="form-group form-defalt input-group mb-4">
+							<div class="form-group form-defalt mb-4">
 								<div class="input-group-prepend">
 									<c:if test="${modolLogin.fotouser != '' && modolLogin.fotouser != null }">
 										<a href="<%= request.getContextPath()%>/ServLetUsuarioController?acao=downLoadFoto&id=${modolLogin.id}">
-										<img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="100px">
+										<img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="110" height="130" hspace="15" vspace="5" border="3" class="aligncenter" >
 										</a>
 									</c:if>
 									<c:if test="${modolLogin.fotouser == '' || modolLogin.fotouser == null }">
-										<img alt="Imagem User" id="fotoembase64" src="assets/imgs/user/user.jpg" width="100px">
+										<img alt="Imagem User" id="fotoembase64" src="assets/imgs/user/user.jpg" width="110" height="130" hspace="15" vspace="5" border="3" class="aligncenter">
 									</c:if>
 									
 								</div>
-								<input type="file" id="fileFoto" name="fileFoto" accept="image/*" onchange="visualizarImg('fotoembase64', 'fileFoto')" class="form-control-file" style="margin-top: 15px; margin-left: 5px">
-							
+								
+								  	<input type="file" id="fileFoto" name="fileFoto" accept="image/*" value="Escolher imagem" onchange="visualizarImg('fotoembase64', 'fileFoto')" class="form-control-file" style="margin-top: 3px; margin-left: 10px">
+						
 							</div>
 							
 						</td>
+						<td width="33%">
+								<div class="form-group form-default linhahorizontal2 form-control-md">
+									<div class="form-floating">
+								  	<input onblur="pesquisaCep()" type="text" name="cep" class="form-control inputstl" id="cep" placeholder="Seu CEP aqui" required="required"  value="${modolLogin.cep}">
+								  	<label for="floatingInput">Cep:</label>
+								</div>
+								</div>
+								
+								<div class="form-group form-default linhahorizontal2 form-control-md">
+									<div class="form-floating">
+								  	<input type="text" name="logradouro" class="form-control inputstl" id="logradouro" placeholder="Seu endereço aqui" required="required"  value="${modolLogin.logradouro}">
+								  	<label for="floatingInput">Endereço:</label>
+								</div>
+								</div>
+								
+								<div class="form-group form-default linhahorizontal2 form-control-md">
+									<div class="form-floating">
+								  	<input type="text" name="numero" class="form-control inputstl" id="numero" placeholder="Seu número aqui" required="required"  value="${modolLogin.numero}">
+								  	<label for="floatingInput">Número:</label>
+								</div>
+								</div>
+								
+								<div class="form-group form-default linhahorizontal2 form-control-md">
+									<div class="form-floating">
+								  	<input type="text" name="bairro" class="form-control inputstl" id="bairro" placeholder="Seu bairro aqui" required="required"  value="${modolLogin.bairro}">
+								  	<label for="floatingInput">Bairro:</label>
+								</div>
+								</div>
+								
+								<table>
+									<tr>
+									<td width="70%">
+										<div class="form-group form-default linhahorizontal2 form-control-md">
+											<div class="form-floating">
+										  	<input type="text" name="localidade" class="form-control inputstl" id="localidade" placeholder="Sua localidade aqui" required="required"  value="${modolLogin.localidade}">
+										  	<label for="floatingInput">Localidade:</label>
+										  	
+										  	
+										</div>
+										</div>
+									</td>
+									<td>
+										<div class="form-group form-default linhahorizontal2 form-control-md">
+											<div class="form-floating">
+										  	<input type="text" name="uf" class="form-control inputstl" id="uf" placeholder="Seu UF aqui" required="required"  value="${modolLogin.uf}">
+										  	<label for="floatingInput">UF:</label>
+										
+										</div>
+										</div>
+									</td>
+									</tr>
+								</table>
+						</td>
+						
 					</tr>		
 					</table>			
 							<div align="center" class="linhahorizontal">
 								
-								<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
-								<button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
-								<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteComAjax();">Excluir</button>
-								<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
+								<button type="button" class="btn btn-primary waves-effect waves-light btn-sm" onclick="limparForm();">Novo</button>
+								<button type="submit" class="btn btn-success waves-effect waves-light btn-sm">Salvar</button>
+								<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="deleteComAjax();">Excluir</button>
+								<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
 	
 							</div>
 				
@@ -480,6 +534,25 @@
 		
 	}
 	
+	function pesquisaCep(){
+		var cep = $("#cep").val();
+		
+		$.getJSON("https://viacep.com.br/ws/"+ cep + "/json/?callback=?", function(dados){
+			
+		if(!("erro" in dados)){
+				$("#cep").val(dados.cep);
+				$("#logradouro").val(dados.logradouro);
+				$("#bairro").val(dados.bairro);
+				$("#localidade").val(dados.localidade);
+				$("#uf").val(dados.uf);
+								
+			}//end if.
+			else{
+				//CEP pesquisado não foi encontrado
+				alert("CEP não encontrado");
+			}
+		});
+	}
 	
 </script>
 

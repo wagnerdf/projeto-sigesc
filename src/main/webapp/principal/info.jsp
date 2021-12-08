@@ -10,10 +10,17 @@
 <form style="width: 138px; height: 136px">
 	<br>
 	<div id="info-imagen">
-  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" class="NO-CACHE"/>
+		<c:if test="${imagemUser != '' && imagemUser != null }">
+	  		<img src="${imagemUser}" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" class="NO-CACHE"/>
+		</c:if>
+		
+		<c:if test="${imagemUser == '' || imagemUser == null }">
+	  		<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" class="NO-CACHE"/>
+		</c:if>
+		
 	</div>
 </form>
-<br>
+<br/>
 <div id="info-texto">
 	<span class="info-texto-destaque">Usuário: </span><%= session.getAttribute("usuario")%><br/>
 	<span class="info-texto-destaque">Data: </span><%=mostra_data%><br/>
@@ -21,12 +28,11 @@
 </div>
 	
 <div>
-<br>
 <div id="info-texto">
-<span class="info-texto-destaque">Opções de Temas</span>
+<span class="info-texto-destaque">Opção Temas</span>
 </div>
 
-<div class="w-auto p-2" align="center" id="info-texto">
+<div class="w-auto p-2 linhahorizontal2" align="center" id="info-texto">
  
   <select class="form-control form-control-sm" aria-label="Default select example" onchange="chooseStyle(this.value, 30)" >
   <optgroup label="Cores">
@@ -41,14 +47,14 @@
 <!-- Button trigger modal -->
 
 
-<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Alterar foto</button>
+<button type="button" class="btn btn-primary  btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Foto quadro</button>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Alterar foto</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Foto quadro</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -71,7 +77,7 @@
      		
      		<div>	
      		<br/>
-     		<button type="submit" class="btn btn-success" value="Upload" id="btalterarfoto" onclick="return alterarFoto()">Alterar foto</button>
+     		<button type="submit" class="btn btn-success  btn-sm" value="Upload" id="btalterarfoto" onclick="return alterarFoto()">Alterar foto quadro</button>
      	 	</div>
      	 </form>	
 
@@ -93,6 +99,15 @@
 
 </div>
 </div>
+
+
+<form style="width: 138px; height: 136px">
+	
+	<div id="info-imagen">
+  	<img src="<%= request.getContextPath() %>/assets/imgs/user/<%= session.getAttribute("nomeFoto")%>" width="83" height="95" hspace="15" vspace="5" border="3" class="aligncenter" style="height: 130px; width: 115px" class="NO-CACHE"/>
+	</div>
+</form>
+
 
 <script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 <script type="text/javascript">

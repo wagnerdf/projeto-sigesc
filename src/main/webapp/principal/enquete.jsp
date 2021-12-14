@@ -193,7 +193,7 @@
 			
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
-</body>
+
 
 
 <!-- Modal -->
@@ -444,7 +444,7 @@
 	};	
 
 </script>
-
+</body>
 </html>
 
 

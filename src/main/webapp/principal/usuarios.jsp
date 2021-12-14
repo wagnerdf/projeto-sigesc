@@ -56,7 +56,7 @@
 
 					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 
-					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
+					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="on">
 					
 							<input type="hidden" name="acao" id="acao" value="">
 						
@@ -70,7 +70,7 @@
 									</div>
 							</div>
 							
-							<div class="form-group form-default linhahorizontal form-control-md">
+							<div class="form-group form-default linhahorizontal">
 							<div class="form-floating">
 							  <input type="text" name="nome" class="form-control inputstl" id="nome" placeholder="Seu nome aqui" required="required"  value="${modolLogin.nome}">
 							  <label for="floatingInput">Nome:</label>
@@ -218,7 +218,7 @@
 								<div class="form-group form-default linhahorizontal2 form-control-md">
 									<div class="form-floating">
 								  	<input type="text" name="numero" class="form-control inputstl" id="numero" placeholder="Seu número aqui" required="required"  value="${modolLogin.numero}">
-								  	<label for="floatingInput">Número:</label>
+								  	<label for="floatingInput">Número: </label>
 								</div>
 								</div>
 								
@@ -261,6 +261,11 @@
 								<button type="button" class="btn btn-primary waves-effect waves-light btn-sm" onclick="limparForm();">Novo</button>
 								<button type="submit" class="btn btn-success waves-effect waves-light btn-sm">Salvar</button>
 								<button type="button" class="btn btn-danger waves-effect waves-light btn-sm" onclick="deleteComAjax();">Excluir</button>
+								
+								<c:if test="${modolLogin.id > 0}">
+								<a href="<%= request.getContextPath() %>/ServletTelefone?iduser=${modolLogin.id}" class="btn btn-info waves-effect waves-light btn-sm">Telefone</a>
+								</c:if>
+								
 								<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalUsuario">Pesquisar</button>
 	
 							</div>
@@ -328,7 +333,7 @@
 			
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
-</body>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -435,6 +440,8 @@
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
+		document.getElementById("fotoembase64").src = "assets/imgs/user/user.jpg"; // coloque a variável das condições que vai mudar a imagem
+		
 		
 	}
 	 
@@ -617,28 +624,89 @@
 		
 	}
 	
-	function pesquisaCep(){
-		var cep = $("#cep").val();
-		
-		$.getJSON("https://viacep.com.br/ws/"+ cep + "/json/?callback=?", function(dados){
-			
-		if(!("erro" in dados)){
-				$("#cep").val(dados.cep);
-				$("#logradouro").val(dados.logradouro);
-				$("#bairro").val(dados.bairro);
-				$("#localidade").val(dados.localidade);
-				$("#uf").val(dados.uf);
-								
-			}//end if.
-			else{
-				//CEP pesquisado não foi encontrado
-				alert("CEP não encontrado");
-			}
-		});
-	}
+	$(document).ready(function() {
+
+		function limpa_formulário_cep(){
+			// Limpa valores do formulário de cep.
+			$("#cep").val("");
+			$("#logradouro").val("");
+	        $("#bairro").val("");
+	        $("#localidade").val("");
+	        $("#uf").val("");
+	        $("#numero").val("");
+			document.getElementById('cep').focus();
+		 }
+        
+        //Quando o campo cep perde o foco.
+        $("#cep").blur(function() {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#logradouro").val("...");
+                    $("#bairro").val("...");
+                    $("#localidade").val("...");
+                    $("#uf").val("...");
+                    $("#numero").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                        	$("#cep").val(dados.cep);
+            				$("#logradouro").val(dados.logradouro);
+            				$("#bairro").val(dados.bairro);
+            				$("#localidade").val(dados.localidade);
+            				$("#uf").val(dados.uf);
+            				$("#numero").val("");
+            				document.getElementById('numero').focus();
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+                
+            }
+        });
+    });
+	
+	var loadImage = function (url, ctx) {
+		  var img = new Image();
+		  img.src = url
+		  img.onload = function () { 
+		    ctx.drawImage(img, 0, 0);
+		  }
+		}
+
+	$("#numero, #cep").keypress(function (event){
+		return /\d/.test(String.fromCharCode(event.keyCode));
+	});
 	
 </script>
-
+</body>
 </html>
 
 

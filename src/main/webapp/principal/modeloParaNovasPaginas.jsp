@@ -1,5 +1,6 @@
+<%@page import="br.sigesc.model.ModelLogin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,15 +12,12 @@
     	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap.min.css"> 
 		
 	
-	    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
+	    <link rel="stylesheet" media="screen" title="padrao-theme" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/sigesc.css" type="text/css"/>
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
-		
-		
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
@@ -34,11 +32,6 @@
 		indicateSelected(formref.switchcontrol)
 		}
 		</script>
-	
-	
-	
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
@@ -57,56 +50,14 @@
 			<div id="sub-conteudo">
 
 	
-				<div class="w-100 p-2" id="menu-vertical"><!------------- Page-body start ------------------------->
+				<div class="w-100 p-2" id="menu-vertical"><!----------------------------- Page-body start ------------------------->
 
-				<div >
-						<div id="info-texto">
-							<h6>Envio de mensagem por E-mail</h6>
-						</div>
-					<form class="form-material" action="<%=request.getContextPath()%>/enviarEmail" method="post" id="formEmail">	
-					<table class="w-100 p-3">
-					
-						<tr>
-							<td align="center">
-							<img src="<%= request.getContextPath() %>/assets/imgs/email.gif" id="email"/>
-							</td>
-					
-							<td>
-								<div class="w-100 p-3">
-									<div class="mb-3">
-										<label for="exampleFormControlInput1" class="form-label">Endereço Email</label>
-										<input type="email" class="form-control" name="inputEmail" placeholder="name@example.com" required="required">
-									</div>
-									<div class="mb-3">
-										<label for="exampleFormControlInput1" class="form-label">Titulo da Mensagem</label>
-										<input type="text" class="form-control" name="inputTitulo" required="required">
-									</div>
-									<div class="mb-3">
-										<label for="exampleFormControlTextarea1" class="form-label">Digite sua mensagem</label>
-										<textarea class="form-control" name="inputMensagem" rows="3" name='mensagem' required></textarea>	
-									</div>
-										 <input type="hidden" name="nome" id="nome" value="<%= session.getAttribute("usuario")%>">
-								</div>
-							</td>
-					
-								
-						</tr>
-						
-					</table>
-					<div align="center">
-					<button type="submit" class="btn btn-primary" >Enviar</button>
-					</div>
-					
-					</form>
-					
-					<br/>
-						<div class="msg">
-							<span id="msg">${msg}</span>
-					</div>
+					<h6 align="center" class="sub-title">Nome da pagina aqui</h6>
 
-					</div>
 
-			</div><!------------------------------------ Page-body end --------------------------------------->
+
+
+				</div><!------------------------------------ Page-body end --------------------------------------->
 
 			</div>
 			<!-- 4 -->	   
@@ -119,7 +70,6 @@
 			
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
-
 
 
 
@@ -150,32 +100,6 @@
 	  });
 	})();
 
-	/*
-	 * Colocamos dentro de um evento window.onload para que comece a execução
-	 * somente após a página inteira carregar.
-	 */
-	window.onload = function() {
-	    setTimeout(function(){
-	        // nome da classe do objeto que deseja manipular
-	        var e = "msg"; 
-
-	        // obtém o objeto pelo nome da classe
-	        var o = document.getElementsByClassName(e);                 
-
-	       /* 
-	        * Define a visibilidade como "none". 
-	        * Dá o mesmo efeito visual de como se estivesse removido.
-	        * Note que getElementsByClassName retornará uma lista de nós(NodeList).
-	        * Portanto, para acessar o elemento desejado, é necessário especificar 
-	        * qual a chave onde ele se encontra. 
-	        * No exemplo é obviamente a chave 0 (zero) pois é único.
-	        */
-	 
-	        o[0].style.display = 'none';
-	        
-	    }, 5000); // O tempo em milisegundos. 1 segundo = 1000 milisegundos.
-	};	
-	
 	function time(){
 		var today = new Date();
 		var h = today.getHours();
@@ -197,6 +121,24 @@
 		tempo.innerHTML = tempo_total;
 	}
 	setInterval(time,500)
+	
+	
+	
+	/*
+	 * Função para limpar mensagens do sistema apos 5 segundos
+	 */
+	window.onload = function() {
+	    setTimeout(function(){
+	       var e = "msg"; 
+
+	        var o = document.getElementsByClassName(e);                 
+
+	        o[0].style.display = 'none';
+	        
+	    }, 5000); 
+	};	
+	
+	
 </script>
 </body>
 </html>

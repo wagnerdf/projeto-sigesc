@@ -137,7 +137,7 @@
 			
 	      	<div id="rodape"><%@ include file="/principal/rodape.jsp" %></div> <!-- 6 -->
     	</div>
-</body>
+
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
@@ -211,5 +211,5 @@
 	
 	
 </script>
-
+</body>
 </html>

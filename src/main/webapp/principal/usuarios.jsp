@@ -15,8 +15,10 @@
 	    <link rel="stylesheet" media="screen" title="padrao-theme" type="text/css" href="<%= request.getContextPath() %>/assets/css/sigesc01.css" />
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
-	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-
+		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
+		
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -32,7 +34,6 @@
 		indicateSelected(formref.switchcontrol)
 		}
 		</script>
-
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
@@ -56,7 +57,7 @@
 
 					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 
-					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="on">
+					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
 					
 							<input type="hidden" name="acao" id="acao" value="">
 						
@@ -168,14 +169,14 @@
 						
 						<td width="33%">	
 							
-							<div class="form-group form-default linhahorizontal">					
+							<div class="form-group form-default linhahorizontal2">					
 							     <div class="form-floating">
 							     <input type="text" name="loginUser" class="form-control inputstl" id="loginUser" placeholder="Seu login aqui" autocomplete="off" required="required"  value="${modolLogin.login}">
 								 <label for="floatingInput">Login:</label>
 								 </div>
 							</div>
 							
-							<div class="form-group form-default linhahorizontal">
+							<div class="form-group form-default linhahorizontal2">
 								<div class="form-floating">
 								<input type="password" name="senha" id="senha" class="form-control inputstl" required="required" placeholder="Sua senha aqui" autocomplete="new-password"  value="${modolLogin.senha}">
 								<label for="floatingPassword">Senha:</label>
@@ -186,11 +187,11 @@
 								<div class="input-group-prepend">
 									<c:if test="${modolLogin.fotouser != '' && modolLogin.fotouser != null }">
 										<a href="<%= request.getContextPath()%>/ServLetUsuarioController?acao=downLoadFoto&id=${modolLogin.id}">
-										<img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="110" height="130" hspace="15" vspace="5" border="3" class="aligncenter" >
+										<img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="90" height="100" hspace="15" vspace="5" border="3" class="aligncenter" >
 										</a>
 									</c:if>
 									<c:if test="${modolLogin.fotouser == '' || modolLogin.fotouser == null }">
-										<img alt="Imagem User" id="fotoembase64" src="assets/imgs/user/user.jpg" width="110" height="130" hspace="15" vspace="5" border="3" class="aligncenter">
+										<img alt="Imagem User" id="fotoembase64" src="assets/imgs/user/user.jpg" width="90" height="100" hspace="10" vspace="5" border="3" class="aligncenter">
 									</c:if>
 									
 								</div>
@@ -198,6 +199,34 @@
 								  	<input type="file" id="fileFoto" name="fileFoto" accept="image/*" value="Escolher imagem" onchange="visualizarImg('fotoembase64', 'fileFoto')" class="form-control-file" style="margin-top: 3px; margin-left: 10px">
 						
 							</div>
+							<table>
+									<tr>
+									<td width="50%">
+											<div class="form-group form-default linhahorizontal2">
+															<div class="form-floating">
+																<input type="text" name="dataNascimento"
+																	class="form-control inputstl" id="dataNascimento"
+																	autocomplete="off" required="required" 
+																	value="${modolLogin.dataNascimento}">
+																	<label for="floatingInput">Data Nascimento:</label>
+															</div>
+														</div>
+									</td>
+									<td>
+									
+										<div class="form-group form-default linhahorizontal2">
+															<div class="form-floating">
+																<input type="text" name="rendamensal"
+																	class="form-control inputstl" id="rendamensal"
+																	autocomplete="off" required="required"
+																	value="${modolLogin.rendamensal}"> 
+																	<label for="floatingInput">Renda Mensal:</label>
+															</div>
+														</div>
+									</td>
+									
+									</tr>
+							</table>
 							
 						</td>
 						<td width="33%">
@@ -388,7 +417,9 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.maskMoney.js"></script>
 
+	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
 
 <script type="text/javascript">
@@ -412,6 +443,7 @@
 	  });
 	})();
 
+	
 	function time(){
 		var today = new Date();
 		var h = today.getHours();
@@ -705,6 +737,42 @@
 		return /\d/.test(String.fromCharCode(event.keyCode));
 	});
 	
+	$(function() {
+	    $("#dataNascimento").datepicker({
+	    	dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior',
+		    changeMonth: true,
+	        changeYear: true,
+	        showOtherMonths: true,
+	        selectOtherMonths: true
+	    });
+	});
+	
+	 
+	 $("#rendamensal").maskMoney({showSymbol:true, symbol:"R$ ", decimal:",", thousands:"."});
+	 
+	 const formatter = new Intl.NumberFormat('pt-BR',{
+		currency : 'BRL',
+		minimumFractionDigits : 2
+	 });
+	
+	 $("#rendamensal").val(formatter.format($("#rendamensal").val()));
+	 
+	 $("#rendamensal").focus();
+	 
+	 var dataNascimento = $("#dataNascimento").val();
+	 var dateFormat = new Date(dataNascimento);
+	 
+	 $("#dataNascimento").val(dateFormat.toLocaleDateString('pt-BR',{timeZone: 'UTC'}));
+	 
+	 $("#nome").focus();
+	 
 </script>
 </body>
 </html>

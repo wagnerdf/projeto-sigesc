@@ -17,7 +17,16 @@
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
 		
-		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" /> 
+		
+		
+		<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/datepicker.css"> 
+		
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+		
+		
+		
+		<!-- <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap-datetimepicker.min.css"/> -->
 		
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		/***********************************************
@@ -34,6 +43,10 @@
 		indicateSelected(formref.switchcontrol)
 		}
 		</script>
+		
+		
+		
+		
 		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
@@ -203,7 +216,7 @@
 									<tr>
 									<td width="50%">
 											<div class="form-group form-default linhahorizontal2">
-															<div class="form-floating">
+															<div class="form-floating" >
 																<input type="text" name="dataNascimento"
 																	class="form-control inputstl" id="dataNascimento"
 																	autocomplete="off" required="required" 
@@ -417,10 +430,20 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
+	
+	
+	
+	
+	 <script src="<%= request.getContextPath() %>/assets/js/bootstrap-datepicker.js"/></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+	
+	
+	
+	
+	
+	
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.maskMoney.js"></script>
-
-	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-
+	
 
 <script type="text/javascript">
 
@@ -737,24 +760,7 @@
 		return /\d/.test(String.fromCharCode(event.keyCode));
 	});
 	
-	$(function() {
-	    $("#dataNascimento").datepicker({
-	    	dateFormat: 'dd/mm/yy',
-		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-		    nextText: 'Próximo',
-		    prevText: 'Anterior',
-		    changeMonth: true,
-	        changeYear: true,
-	        showOtherMonths: true,
-	        selectOtherMonths: true
-	    });
-	});
-	
-	 
+ 
 	 $("#rendamensal").maskMoney({showSymbol:true, symbol:"R$ ", decimal:",", thousands:"."});
 	 
 	 const formatter = new Intl.NumberFormat('pt-BR',{
@@ -772,6 +778,27 @@
 	 $("#dataNascimento").val(dateFormat.toLocaleDateString('pt-BR',{timeZone: 'UTC'}));
 	 
 	 $("#nome").focus();
+	 
+	 
+	
+	 $( "#dataNascimento" ).datepicker({
+		 	format: 'dd/mm/yyyy',
+		 	dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior',
+		    changeMonth: true,
+	        changeYear: true,
+	        showOtherMonths: true,
+		 	autoclose: 'true',
+		 	todayHighlight: 'true',
+		 	inline: true,
+		 	language: 'pt-BR'
+		});
 	 
 </script>
 </body>

@@ -179,7 +179,7 @@ public class ServLetUsuarioController extends ServletGenericUtil {
 		String dataNascimento = request.getParameter("dataNascimento");
 		String rendaMensal = request.getParameter("rendamensal");
 		
-		rendaMensal = rendaMensal.replaceAll("\\.", "").replaceAll("\\,", ".");
+		rendaMensal = rendaMensal.split("\\ ")[1].replaceAll("\\.", "").replaceAll("\\,", ".");
 		
 		
 		

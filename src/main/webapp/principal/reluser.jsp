@@ -83,10 +83,39 @@
 							</div>
 							
 						</div>
-
-
-
 					</form>	
+					
+					<div style="height: 340px; overflow: scroll;">
+						<table class="table" id="tabelaresultadosView">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Nome</th>
+									<th scope="col">Perfil</th>
+									<th scope="col">Login</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${listaUser}" var="ml">
+									<tr>
+										<td><c:out value="${ml.id}"></c:out></td>
+										<td><c:out value="${ml.nome}"></c:out></td>
+										<td><c:out value="${ml.perfil}"></c:out></td>
+										<td><c:out value="${ml.login}"></c:out></td>
+									</tr>
+									
+									<c:forEach items="${ml.telefones}" var="fone">
+										<tr>
+											<td/>
+												<td style="font-size: 10px"><c:out value="${fone.numero}"></c:out></td>
+										</tr>
+									</c:forEach>	
+								</c:forEach>
+							</tbody>
+
+						</table>
+
+					</div>
 
 				</div><!------------------------------------ Page-body end --------------------------------------->
 

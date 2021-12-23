@@ -16,18 +16,9 @@
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 		<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
-		
-		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" /> 
-		
-		
-		<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/datepicker.css"> 
-		
-		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-		
-		
-		
-		<!-- <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap-datetimepicker.min.css"/> -->
-		
+
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />  
+	
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		/***********************************************
 		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -67,9 +58,10 @@
 				<div class="w-100 p-2" id="menu-vertical"><!----------------------------- Page-body start ------------------------->
 
 
-
-					<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
-
+					<div id="info-texto">
+						<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
+					</div>
+					
 					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
 					
 							<input type="hidden" name="acao" id="acao" value="">
@@ -432,16 +424,7 @@
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 	
 	
-	
-	
-	 <script src="<%= request.getContextPath() %>/assets/js/bootstrap-datepicker.js"/></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
-	
-	
-	
-	
-	
-	
+	 <script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.maskMoney.js"></script>
 	
 
@@ -778,37 +761,23 @@
 	 $("#dataNascimento").val(dateFormat.toLocaleDateString('pt-BR',{timeZone: 'UTC'}));
 	 
 	 $("#nome").focus();
-	 
-	 
-	
-	 $( "#dataNascimento" ).datepicker({
-		 	format: 'dd/mm/yyyy',
-		 	dateFormat: 'dd/mm/yy',
-		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-		    nextText: 'Próximo',
-		    prevText: 'Anterior',
-		    changeMonth: true,
-	        changeYear: true,
-	        showOtherMonths: true,
-		 	autoclose: 'true',
-		 	todayHighlight: 'true',
-		 	inline: true,
-		 	language: 'pt-BR'
-		});
+
+ 
+	 $(function() {
+		 $( "#dataNascimento" ).datepicker({
+			 dateFormat: 'dd/mm/yy',
+			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			    nextText: 'Próximo',
+			    prevText: 'Anterior',
+			    changeMonth: true,
+		        changeYear: true,    
+		 });
+	 });
 	 
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -22,7 +22,7 @@
            		 <c:if test="${perfil == 'ADMIN'}">                 
                  	<li><a href="<%= request.getContextPath() %>/ServLetUsuarioController?acao=listarUser">Cadastrar Usuários</a></li>
                  </c:if>
-                 <li><a href="">Cadastrar Login</a></li>
+                 <li><a href="<%= request.getContextPath() %>/principal/reluser.jsp">Relatório Usuário</a></li>
                  <li><a href="">Pesquisar Funcionário</a></li>
                  <li><a href="">Pesquisar Usuários</a></li>
                  <li><a href="">Pesquisar Login</a></li>

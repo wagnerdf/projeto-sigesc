@@ -3,6 +3,7 @@ package br.sigesc.util;
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.collections.map.HashedMap;
@@ -17,6 +18,19 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class ReportUtil implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
+	public byte[] geraRelatorioPDF(List listaDados, String nomeRelatorio, HashMap<String, Object> params, ServletContext servletContext)throws Exception {
+		
+		/*Cria a lista de dados que vem do nosso SQL da consulta feita */
+		JRBeanCollectionDataSource jrbcds = new JRBeanCollectionDataSource(listaDados);
+		
+		String caminhoJasper = servletContext.getRealPath("relatorio") + File.separator + nomeRelatorio + ".jasper";
+		
+		JasperPrint impressoraJasper =  JasperFillManager.fillReport(caminhoJasper, params, jrbcds);
+		
+		return JasperExportManager.exportReportToPdf(impressoraJasper);
+		
+	}
 
 	public byte[] geraRelatorioPDF(List listaDados, String nomeRelatorio, ServletContext servletContext)throws Exception {
 		

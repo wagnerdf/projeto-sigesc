@@ -63,16 +63,16 @@
 						<div align="center">
 						<TABLE>
 		
-							<TR>
-							<TD WIDTH=50%>
+							<tr>
+							<td width="33%">
 										<div align="center">
 											<img src="<%=request.getContextPath()%>/assets/imgs/condominio.jpg" width="225" height="318">
 										</div>
-							</TD>
-							<TD WIDTH=50%>
-									<div align="left">
+							</td>
+							<td width="33%">
+									<div align="center">
 										<h6><span class="style1">Enquete:</span></h6>
-											<div>
+											<div align="left">
 												<br>
 												<h6>Como você usuário avalia o portal Sigesc adquirido
 													para automatizar as operações realizadas diariamente no
@@ -98,12 +98,25 @@
 												
 												<br>
 												<br> 
+												<div align="center">
 												<button type="button" class="btn btn-primary" name="Votar" value="Votar">Votar</button>
-												<button type="button" class="btn btn-warning" name="Resultado" value="Resultado">Resultado</button>
+												<button type="button" class="btn btn-warning" name="grafico" value="grafico" onclick="gerarGrafico();">Gerar Gráfico</button>
+												</div>
 											</div>
 									</div>
-							</TD>
-							</TR>
+							</td>
+							<td width="33%">
+								
+								<div style="width: 260px; height: 320px;" >
+
+									<div>
+										<canvas id="myChart"></canvas>
+									</div>
+
+								</div>
+							
+							</td>
+							</tr>
 					</TABLE>
 					
 					<table>
@@ -142,6 +155,7 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script type="text/javascript">
 
@@ -209,6 +223,33 @@
 		
 	}
 	
+		  
+	function gerarGrafico(){
+	
+		const myChart = new Chart(
+				document.getElementById('myChart'),
+				{
+				  type: 'line',
+				  data: {
+					  labels: [
+						  'Janeiro',
+						  'Fevereiro',
+						  'Março',
+						  'Abril',
+						  'Maio',
+						  'Junho',
+						],
+					  datasets: [{
+					    label: 'Gráfico média salarial por tipo',
+					    backgroundColor: 'rgb(255, 99, 132)',
+					    borderColor: 'rgb(255, 99, 132)',
+					    data: [0, 10, 5, 2, 20, 30, 45],
+					  }]
+					},
+				  options: {}
+				}
+			);
+	}
 	
 </script>
 </body>

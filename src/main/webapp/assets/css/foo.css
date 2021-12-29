@@ -1,3 +1,7 @@
+.bordertd{
+  border: 1px solid black;
+}
+
 .linhahorizontal {
   padding: 10px;
 }

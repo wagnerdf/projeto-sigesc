@@ -15,6 +15,8 @@
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="blue-theme" href="<%= request.getContextPath() %>/assets/css/sigesc02.css"/>
 		<link rel="alternate stylesheet" type="text/css" media="screen" title="brown-theme" href="<%= request.getContextPath() %>/assets/css/sigesc03.css"/>
 	    <link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/foo.css"/> <!-- Somente para exemplo. -->
+	    
+	    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />  
 
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		/***********************************************
@@ -54,12 +56,15 @@
 		
 					<div id="sub-conteudo">
 		
+		
 						<div id="info-texto">
 							<h6>Seja bem-vindo:	<%=session.getAttribute("usuario")%></h6>
 						</div>
 		
 						<br>
-		
+						
+						
+								
 						<div align="center">
 						<TABLE>
 		
@@ -109,6 +114,31 @@
 								
 								<div style="width: 260px; height: 320px;" >
 
+									<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="get" id="formUser">
+
+										<input type="hidden" id="acaoRelatorioImprimirTipo"	name="acao" value="imprimirRelatorioUser">
+
+										<div class="form-row align-items-center row">
+
+											<div class="col-sm-6 center">
+												<label class="sr-only" for="dataInicial">Data Inicial</label> 
+												<input value="${dataInicial}" class="form-control" id="dataInicial" name="dataInicial">
+											</div>
+
+											<div class="col-sm-6 center">
+												<label class="sr-only" for="dataFinal">Data Final</label>
+												
+													<input value="${dataFinal}" type="text"	class="form-control" id="dataFinal" name="dataFinal">
+												
+											</div>
+
+										</div>
+										<div class="col-auto my-3">
+											
+												<button type="button" onclick="gerarGrafico();"	class="btn btn-primary">Gerar Gráfico</button>
+													
+										</div>
+									</form>
 									<div>
 										<canvas id="myChart"></canvas>
 									</div>
@@ -127,7 +157,6 @@
 							<br/>
 							<br/>
 							<div class="msg" align="center">
-								
 								<span id="msg">${msg}</span>
 							</div>
 						</div>	
@@ -138,7 +167,7 @@
 					
 				</div>
 					
-
+				
 			</div>
 			<!-- 4 -->	   
 	      		
@@ -156,6 +185,7 @@
 	<script src="<%= request.getContextPath() %>/assets/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/assets/js/jquery-ui.js"></script>
 
 <script type="text/javascript">
 
@@ -223,33 +253,81 @@
 		
 	}
 	
+	var myChart = new Chart(document.getElementById('myChart'));
 		  
 	function gerarGrafico(){
-	
-		const myChart = new Chart(
-				document.getElementById('myChart'),
-				{
-				  type: 'line',
-				  data: {
-					  labels: [
-						  'Janeiro',
-						  'Fevereiro',
-						  'Março',
-						  'Abril',
-						  'Maio',
-						  'Junho',
-						],
-					  datasets: [{
-					    label: 'Gráfico média salarial por tipo',
-					    backgroundColor: 'rgb(255, 99, 132)',
-					    borderColor: 'rgb(255, 99, 132)',
-					    data: [0, 10, 5, 2, 20, 30, 45],
-					  }]
-					},
-				  options: {}
-				}
-			);
+		
+		
+		var urlAction = document.getElementById('formUser').action;
+		var dataInicial = document.getElementById('dataInicial').value;
+		var dataFinal = document.getElementById('dataFinal').value;
+		
+		$.ajax({
+			
+			method: "get",
+			url : urlAction,
+			data : "dataInicial=" + dataInicial + '&dataFinal=' + dataFinal + '&acao=graficoSalario',
+			success: function (response){
+				
+				var json = JSON.parse(response);
+				
+				myChart.destroy();
+			
+				 myChart = new Chart(
+						document.getElementById('myChart'),
+						{
+						  type: 'line',
+						  data: {
+							  labels: json.perfils,
+							  datasets: [{
+							    label: 'Gráfico média salarial por tipo',
+							    backgroundColor: 'rgb(255, 99, 132)',
+							    borderColor: 'rgb(255, 99, 132)',
+							    data: json.salarios,
+							  }]
+							},
+						  options: {}
+						}
+					);
+			
+			}
+			
+		}).fail(function(xhr, status, errorThrown){
+			alert('Erro ao buscar dados para o grafico: '+ xhr.responseText);
+			
+		});
+
 	}
+	
+	$(function() {
+		 $( "#dataInicial").datepicker({
+			 dateFormat: 'dd/mm/yy',
+			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			    nextText: 'Próximo',
+			    prevText: 'Anterior',
+			    changeMonth: true,
+		        changeYear: true,    
+		 });
+	 });
+	
+	$(function() {
+		 $( "#dataFinal").datepicker({
+			 dateFormat: 'dd/mm/yy',
+			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			    nextText: 'Próximo',
+			    prevText: 'Anterior',
+			    changeMonth: true,
+		        changeYear: true,    
+		 });
+	 });
 	
 </script>
 </body>

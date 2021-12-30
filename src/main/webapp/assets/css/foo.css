@@ -1,5 +1,9 @@
-.bordertd{
-  border: 1px solid black;
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .linhahorizontal {

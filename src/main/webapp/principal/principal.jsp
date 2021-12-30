@@ -77,7 +77,7 @@
 							<td width="33%">
 									<div align="center">
 										<h6><span class="style1">Enquete:</span></h6>
-											<div align="left">
+											<div align="left" class="bordertransparent">
 												<br>
 												<h6>Como você usuário avalia o portal Sigesc adquirido
 													para automatizar as operações realizadas diariamente no
@@ -112,7 +112,7 @@
 							</td>
 							<td width="33%">
 								
-								<div style="width: 260px; height: 320px;" >
+								<div style="width: 265px; height: 320px;" >
 
 									<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="get" id="formUser">
 

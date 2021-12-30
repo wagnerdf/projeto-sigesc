@@ -1,3 +1,9 @@
+.bordertransparent {
+
+    border: 5px solid transparent;
+    
+}
+
 .center {
     display: flex;
     flex-wrap: wrap;

@@ -79,7 +79,7 @@
 										<h6><span class="style1">Enquete:</span></h6>
 											<div align="left" class="bordertransparent">
 												<br>
-												<h6>Como você usuário avalia o portal Sigesc adquirido
+												<h6>&nbsp&nbsp&nbspComo você usuário avalia o portal SIGESC adquirido
 													para automatizar as operações realizadas diariamente no
 													condomínio?</h6>
 												<br> 
@@ -104,22 +104,24 @@
 												<br>
 												<br> 
 												<div align="center">
-												<button type="button" class="btn btn-primary" name="Votar" value="Votar">Votar</button>
-												<button type="button" class="btn btn-warning" name="grafico" value="grafico" onclick="gerarGrafico();">Gerar Gráfico</button>
+													<button type="button" class="btn btn-primary" name="Votar" value="Votar">Votar</button>
+													<button type="button" class="btn btn-warning" name="grafico" value="grafico" onclick="gerarGrafico();">Gerar Gráfico</button>
 												</div>
 											</div>
 									</div>
 							</td>
 							<td width="33%">
 								
-								<div style="width: 265px; height: 320px;" >
+								<div style="width: 265px; height: 332px;" >
 
 									<form class="form-material"	action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="get" id="formUser">
-
+										<div align="center">
+										<h6><span class="style1">Calcular media salarial</span></h6>
+										</div>
 										<input type="hidden" id="acaoRelatorioImprimirTipo"	name="acao" value="imprimirRelatorioUser">
 
 										<div class="form-row align-items-center row">
-
+										
 											<div class="col-sm-6 center">
 												<label class="sr-only" for="dataInicial">Data Inicial</label> 
 												<input value="${dataInicial}" class="form-control" id="dataInicial" name="dataInicial">
@@ -133,9 +135,9 @@
 											</div>
 
 										</div>
-										<div class="col-auto my-3">
+										<div class="col-auto my-3" >
 											
-												<button type="button" onclick="gerarGrafico();"	class="btn btn-primary">Gerar Gráfico</button>
+												<button type="button" onclick="gerarGrafico();"	class="btn btn-primary" style="display: block; margin: 0 auto;">Gerar Gráfico</button>
 													
 										</div>
 									</form>

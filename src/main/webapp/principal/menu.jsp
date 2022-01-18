@@ -18,37 +18,34 @@
     <li><a href="#">|&nbsp;Usuários&nbsp;|</a>
       	<ul>
            		
-           		 <li><a href="">Cadastrar Funcionário</a></li>
+           		 <li><a class="disabled" href=>Cadastrar Funcionário</a></li>
            		 <c:if test="${perfil == 'ADMIN'}">                 
                  	<li><a href="<%= request.getContextPath() %>/ServLetUsuarioController?acao=listarUser">Cadastrar Usuários</a></li>
                  </c:if>
                  <li><a href="<%= request.getContextPath() %>/principal/reluser.jsp">Relatório Usuário</a></li>
-                 <li><a href="">Pesquisar Funcionário</a></li>
-                 <li><a href="">Pesquisar Usuários</a></li>
-                 <li><a href="">Pesquisar Login</a></li>
+                 <li><a class="disabled" href=>Relatório Funcionário</a></li>
         </ul>
      </li>   
     <li><a href="#">|&nbsp;Serviços&nbsp;|</a>
        <ul> 
-       		<li><a href="/boleto/samples/form.html" target="_Blank" >Módulo Boleto</a></li>
-            <li><a href="" >Cadastrar Fornecedor</a></li>
-            <li><a href="">Agendar Salão de Festas</a></li>
-             <li><a href="">Agendar Reunião Virtual</a></li>
-            <li><a href="">Solicitar Manutenção</a></li>
-            <li><a href="">Upload de Arquivos</a></li>
+       		<li><a class="disabled" href=>Módulo Boleto</a></li>
+            <li><a class="disabled" href=>Cadastrar Fornecedor</a></li>
+            <li><a class="disabled" href=>Agendar Salão de Festas</a></li>
+             <li><a class="disabled" href=>Agendar Reunião Virtual</a></li>
+            <li><a class="disabled" href=>Solicitar Manutenção</a></li>
+            <li><a class="disabled" href=>Upload de Arquivos</a></li>
        </ul>
     </li>
     <li><a href="#">|&nbsp;Consulta&nbsp;|</a>
           <ul>
-          	<li><a href="">Comunicados</a></li>
-           	<li><a href="">Comunicados</a></li>
-            <li><a href="">Ata de Reunião</a></li>
-            <li><a href="">Relatório Financeiro</a></li>
-            <li><a href="">Normas e Regimentos</a></li>
-             <li><a href="">Listar Agenda de Reunião</a></li>
-            <li><a href="">Agenda Salão de Festas</a></li>
-            <li><a href="">Relação de Fornecedores</a></li>
-            <li><a href="">Relação de Manutenção</a></li>
+          	<li><a class="disabled" href=>Comunicados</a></li>
+            <li><a class="disabled" href=>Ata de Reunião</a></li>
+            <li><a class="disabled" href=>Relatório Financeiro</a></li>
+            <li><a class="disabled" href=>Normas e Regimentos</a></li>
+            <li><a class="disabled" href=>Agendas de Reuniões</a></li>
+            <li><a class="disabled" href=>Agenda Salão de Festas</a></li>
+            <li><a class="disabled" href=>Relação de Fornecedores</a></li>
+            <li><a class="disabled" href=>Relação de Manutenção</a></li>
             
         </ul>
     </li>
@@ -56,9 +53,9 @@
           <ul>
             <li><a href="<%= request.getContextPath() %>/principal/enquete.jsp">Enquete</a></li>
             <li><a href="<%= request.getContextPath() %>/principal/emailUsuarios.jsp">Mensagem</a></li>
-            <li><a href="">Chat</a></li>
-            <li><a href="">Sugestão</a></li>
-            <li><a href="">Reclamaçao</a></li>         
+            <li><a class="disabled" href=>Chat</a></li>
+            <li><a class="disabled" href=>Sugestão</a></li>
+            <li><a class="disabled" href=>Reclamaçao</a></li>         
            </ul>
     </li>
     

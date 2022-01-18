@@ -7,8 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.collections.map.HashedMap;
-import org.apache.tomcat.jakartaee.commons.compress.utils.IOUtils;
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -22,7 +21,6 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;

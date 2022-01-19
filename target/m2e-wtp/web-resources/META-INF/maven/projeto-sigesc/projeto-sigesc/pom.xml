@@ -1,5 +1,6 @@
-<project xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>projeto-sigesc</groupId>
   <artifactId>projeto-sigesc</artifactId>
@@ -9,6 +10,10 @@
   <description>Projeto SIGESC – Um Portal de Transparência e Gestão para
 Condomínios</description>
  
+	 <properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
  
  <dependencies>
 
@@ -63,28 +68,30 @@ Condomínios</description>
 	</dependency>
 	
 	<dependency>
-		<groupId>javax.servlet.jsp</groupId>
-		<artifactId>jsp-api</artifactId>
-		<version>2.1</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>javax.servlet.jsp.jstl</groupId>
-		<artifactId>jstl-api</artifactId>
-		<version>1.2</version>
-	</dependency>
-	
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+<!-- 	
 	<dependency>
 	    <groupId>org.glassfish.web</groupId>
 	    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
 	    <version>2.0.0</version>  
 	</dependency>
-
+ -->
 	<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 	<dependency>
-		<groupId>net.sf.jasperreports</groupId>
+		<groupId>net.sf.jasperreports</groupId> 
 		<artifactId>jasperreports</artifactId>
-		<version>6.18.1</version>
+		<version>6.17.0</version>
 	</dependency>
 
 
@@ -96,7 +103,7 @@ Condomínios</description>
 	<dependency>
 		<groupId>org.apache.tomcat</groupId>
 		<artifactId>tomcat-coyote</artifactId>
-		<version>10.1.0-M5</version>
+		<version>10.0.0</version>
 	</dependency>
 	<dependency>
 		<groupId>org.apache.commons</groupId>
@@ -109,18 +116,38 @@ Condomínios</description>
  
 
   <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>11</release>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-    </plugins>
-  </build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+			
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.heroku</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>9.0.52.0</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

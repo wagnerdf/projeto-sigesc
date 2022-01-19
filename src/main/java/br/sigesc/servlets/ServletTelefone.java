@@ -7,11 +7,11 @@ import br.sigesc.dao.DAOTelefoneRepository;
 import br.sigesc.dao.DAOUsuarioRepository;
 import br.sigesc.model.ModelLogin;
 import br.sigesc.model.ModelTelefone;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import jakarta.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebServlet;
 
 
 @WebServlet("/ServletTelefone")

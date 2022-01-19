@@ -1,13 +1,12 @@
 <%@page import="br.sigesc.model.ModelLogin"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<link rel="shortcut icon" type="imagex/png" href="<%=request.getContextPath()%>/assets/imgs/sigesc.ico">
-		<meta charset="ISO-8859-1">
-	
+			
 		<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/bootstrap.min.css"> 
 		
@@ -21,7 +20,7 @@
 	
 		<script src="<%= request.getContextPath() %>/assets/js/styleswitch.js" type="text/javascript"> 
 		/***********************************************
-		* Style Sheet Switcher v1.1- Â© Dynamic Drive DHTML code library (www.dynamicdrive.com)
+		* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
 		* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
 		***********************************************/
@@ -38,7 +37,7 @@
 		
 		
 		
-		<title>SIGESC - Um Portal de TransparÃªncia e GestÃ£o para CondomÃ­nios</title>
+		<title>SIGESC - Um Portal de Transparência e Gestão para Condomínios</title>
 </head>
 	
 	<body id="corpo">
@@ -59,7 +58,7 @@
 
 
 					<div id="info-texto">
-						<h6 align="center" class="sub-title">Cadastro de UsuÃ¡rio</h6>
+						<h6 align="center" class="sub-title">Cadastro de Usuário</h6>
 					</div>
 					
 					<form class="form-material"	enctype="multipart/form-data" action="<%=request.getContextPath()%>/ServLetUsuarioController"	method="post" id="formUser" autocomplete="off">
@@ -137,7 +136,7 @@
 										out.print(" ");
 											out.print("selected=\"selected\"");
 										out.print(" ");
-									} %>>SÃ­ndico</option>
+									} %>>Síndico</option>
 									
 									<option value="CONDOMINO" <%
 									
@@ -147,7 +146,7 @@
 										out.print(" ");
 											out.print("selected=\"selected\"");
 										out.print(" ");
-									} %>>CondÃ´mino</option>
+									} %>>Condômino</option>
 									<option value="INQUILINO" <% 
 									
 									modelLogin = (ModelLogin) request.getAttribute("modolLogin");
@@ -244,15 +243,15 @@
 								
 								<div class="form-group form-default linhahorizontal2 form-control-md">
 									<div class="form-floating">
-								  	<input type="text" name="logradouro" class="form-control inputstl" id="logradouro" placeholder="Seu endereÃ§o aqui" required="required"  value="${modolLogin.logradouro}">
-								  	<label for="floatingInput">EndereÃ§o:</label>
+								  	<input type="text" name="logradouro" class="form-control inputstl" id="logradouro" placeholder="Seu endereço aqui" required="required"  value="${modolLogin.logradouro}">
+								  	<label for="floatingInput">Endereço:</label>
 								</div>
 								</div>
 								
 								<div class="form-group form-default linhahorizontal2 form-control-md">
 									<div class="form-floating">
-								  	<input type="text" name="numero" class="form-control inputstl" id="numero" placeholder="Seu nÃºmero aqui" required="required"  value="${modolLogin.numero}">
-								  	<label for="floatingInput">NÃºmero: </label>
+								  	<input type="text" name="numero" class="form-control inputstl" id="numero" placeholder="Seu número aqui" required="required"  value="${modolLogin.numero}">
+								  	<label for="floatingInput">Número: </label>
 								</div>
 								</div>
 								
@@ -374,7 +373,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de UsuÃ¡rio</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Usuário</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -478,7 +477,7 @@
 		for (p = 0; p < elementos.length; p++){
 			elementos[p].value = '';
 		}
-		document.getElementById("fotoembase64").src = "assets/imgs/user/user.jpg"; // coloque a variÃ¡vel das condiÃ§Ãµes que vai mudar a imagem
+		document.getElementById("fotoembase64").src = "assets/imgs/user/user.jpg"; // coloque a variável das condições que vai mudar a imagem
 		
 		
 	}
@@ -486,7 +485,7 @@
 	
 	function criarDelete(){
 		
-		if(confirm('Deseja realmente excluir o UsuÃ¡rio?')){
+		if(confirm('Deseja realmente excluir o Usuário?')){
 		
 		document.getElementById("formUser").method = 'get';
 		document.getElementById("acao").value = 'deletar';
@@ -519,7 +518,7 @@
 						}
 						
 					}).fail(function(xhr, status, errorThrown){
-						alert('Erro ao deletar usuÃ¡rio por id: '+ xhr.responseText);
+						alert('Erro ao deletar usuário por id: '+ xhr.responseText);
 						
 					});
 					
@@ -565,7 +564,7 @@
 			}
 			
 		}).fail(function(xhr, status, errorThrown){
-			alert('Erro ao buscar usuÃ¡rio por nome: '+ xhr.responseText);
+			alert('Erro ao buscar usuário por nome: '+ xhr.responseText);
 			
 		});
 	}
@@ -612,7 +611,7 @@
 				}
 				
 			}).fail(function(xhr, status, errorThrown){
-				alert('Erro ao buscar usuÃ¡rio por nome: '+ xhr.responseText);
+				alert('Erro ao buscar usuário por nome: '+ xhr.responseText);
 				
 			});
 			
@@ -631,7 +630,7 @@
 	}
 	
 	/*
-	 * FunÃ§Ã£o para limpar mensagens do sistema apos 5 segundos
+	 * Função para limpar mensagens do sistema apos 5 segundos
 	 */
 	window.onload = function() {
 	    setTimeout(function(){
@@ -664,8 +663,8 @@
 	
 	$(document).ready(function() {
 
-		function limpa_formulÃ¡rio_cep(){
-			// Limpa valores do formulÃ¡rio de cep.
+		function limpa_formulário_cep(){
+			// Limpa valores do formulário de cep.
 			$("#cep").val("");
 			$("#logradouro").val("");
 	        $("#bairro").val("");
@@ -678,13 +677,13 @@
         //Quando o campo cep perde o foco.
         $("#cep").blur(function() {
 
-            //Nova variÃ¡vel "cep" somente com dÃ­gitos.
+            //Nova variável "cep" somente com dígitos.
             var cep = $(this).val().replace(/\D/g, '');
 
             //Verifica se campo cep possui valor informado.
             if (cep != "") {
 
-                //ExpressÃ£o regular para validar o CEP.
+                //Expressão regular para validar o CEP.
                 var validacep = /^[0-9]{8}$/;
 
                 //Valida o formato do CEP.
@@ -711,21 +710,21 @@
             				document.getElementById('numero').focus();
                         } //end if.
                         else {
-                            //CEP pesquisado nÃ£o foi encontrado.
-                            limpa_formulÃ¡rio_cep();
-                            alert("CEP nÃ£o encontrado.");
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
                         }
                     });
                 } //end if.
                 else {
-                    //cep Ã© invÃ¡lido.
-                    limpa_formulÃ¡rio_cep();
-                    alert("Formato de CEP invÃ¡lido.");
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
                 }
             } //end if.
             else {
-                //cep sem valor, limpa formulÃ¡rio.
-                limpa_formulÃ¡rio_cep();
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
                 
             }
         });
@@ -772,12 +771,12 @@
 	 $(function() {
 		 $( "#dataNascimento" ).datepicker({
 			 dateFormat: 'dd/mm/yy',
-			    dayNames: ['Domingo','Segunda','TerÃ§a','Quarta','Quinta','Sexta','SÃ¡bado'],
+			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
 			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','SÃ¡b','Dom'],
-			    monthNames: ['Janeiro','Fevereiro','MarÃ§o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-			    nextText: 'PrÃ³ximo',
+			    nextText: 'Próximo',
 			    prevText: 'Anterior',
 			    changeMonth: true,
 		        changeYear: true,    

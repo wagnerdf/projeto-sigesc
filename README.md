@@ -4,7 +4,7 @@
 # Sobre o projeto
 ![Web 1](https://github.com/wagnerdf/projeto-sigesc/blob/master/src/main/webapp/assets/imgs/sigesc01.jpg)
 
-https://projetosigescwagner.herokuapp.com/projeto-sigesc/
+https://projetosigescwagner.herokuapp.com/projeto-sigesc/ Login/senha = admin
 
 O Portal da Transparência para condomínios tem como finalidade realizar uma gestão transparente para os moradores no sentido de adequar as normas e regimentos. O dispositivo estabelece regras de finanças voltadas para a responsabilidade na gestão fiscal, além de determinar a disponibilização em tempo real de informações sobre a execução orçamentária, financeira entre outros. Na prática, o Portal da Transparência é um instrumento de controle do síndico para os seus respectivos condôminos, que, poderão acompanhar suas ações e conhecer como seus recursos serão aplicados, além de auxiliar e facilitar o cotidiano de moradores e síndicos com outras funcionalidades que serão descritas neste documento. 
 
